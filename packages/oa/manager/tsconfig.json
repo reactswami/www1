@@ -1,0 +1,71 @@
+{
+   "extends": "../../../tsconfig.base.json",
+   "compilerOptions": {
+      "target": "ESNext",
+      "useDefineForClassFields": true,
+      "module": "ESNext",
+      "strict": true,
+      "moduleResolution": "Node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "types": ["vite/client"],
+      "noEmit": true,
+      "lib": ["DOM", "DOM.Iterable", "ESNext"],
+      "allowJs": false,
+      "esModuleInterop": false,
+      "skipLibCheck": true,
+      "allowSyntheticDefaultImports": true,
+      "forceConsistentCasingInFileNames": true,
+      "jsx": "react-jsx",
+      "paths": {
+         "@statseeker": ["libraries"],
+         "@statseeker/api": ["libraries/api/src"],
+         "@statseeker/api/*": ["libraries/api/src/*"],
+         "@statseeker/components": ["libraries/components/src"],
+         "@statseeker/components/*": ["libraries/components/src/*"],
+         "@statseeker/hooks": ["libraries/hooks/src"],
+         "@statseeker/hooks/*": ["libraries/hooks/src/*"],
+         "@statseeker/ui": ["libraries/ui/src"],
+         "@statseeker/ui/*": ["libraries/ui/src/*"],
+         "@statseeker/utils": ["libraries/utils/src"],
+         "@statseeker/utils/*": ["libraries/utils/src/*"],
+         "@tooling/configuration": ["libraries/tooling/configuration/src"],
+         "~/api": ["packages/oa/manager/src/api"],
+         "~/api/*": ["packages/oa/manager/src/api/*"],
+         "~/components": ["packages/oa/manager/src/components"],
+         "~/components/*": ["packages/oa/manager/src/components/*"],
+         "~/config": ["packages/oa/manager/src/config"],
+         "~/config/*": ["packages/oa/manager/src/config/*"],
+         "~/contexts": ["packages/oa/manager/src/contexts"],
+         "~/contexts/*": ["packages/oa/manager/src/contexts/*"],
+         "~/features": ["packages/oa/manager/src/features"],
+         "~/features/*": ["packages/oa/manager/src/features/*"],
+         "~/hooks": ["packages/oa/manager/src/hooks"],
+         "~/hooks/*": ["packages/oa/manager/src/hooks/*"],
+         "~/lib": ["packages/oa/manager/src/lib"],
+         "~/lib/*": ["packages/oa/manager/src/lib/*"],
+         "~/providers": ["packages/oa/manager/src/providers"],
+         "~/providers/*": ["packages/oa/manager/src/providers/*"],
+         "~/reducers": ["packages/oa/manager/src/reducers"],
+         "~/reducers/*": ["packages/oa/manager/src/reducers/*"],
+         "~/routes": ["packages/oa/manager/src/routes"],
+         "~/routes/*": ["packages/oa/manager/src/routes/*"],
+         "~/test": ["packages/oa/manager/src/test"],
+         "~/test/*": ["packages/oa/manager/src/test/*"],
+         "~/types": ["packages/oa/manager/src/types"],
+         "~/types/*": ["packages/oa/manager/src/types/*"],
+         "~/utils": ["packages/oa/manager/src/utils"],
+         "~/utils/*": ["packages/oa/manager/src/utils/*"]
+      }  
+   },
+   "files": [],
+   "include": ["src"],
+   "references": [
+      {
+         "path": "./tsconfig.app.json"
+      },
+      {
+         "path": "./tsconfig.spec.json"
+      }
+   ]
+}

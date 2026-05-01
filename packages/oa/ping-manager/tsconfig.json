@@ -1,0 +1,71 @@
+{
+   "extends": "../../../tsconfig.base.json",
+   "compilerOptions": {
+      "target": "ESNext",
+      "useDefineForClassFields": true,
+      "module": "ESNext",
+      "strict": true,
+      "moduleResolution": "Node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "types": ["vite/client"],
+      "noEmit": true,
+      "lib": ["DOM", "DOM.Iterable", "ESNext"],
+      "allowJs": false,
+      "esModuleInterop": false,
+      "skipLibCheck": true,
+      "allowSyntheticDefaultImports": true,
+      "forceConsistentCasingInFileNames": true,
+      "jsx": "react-jsx",
+      "paths": {
+         "@statseeker": ["libraries"],
+         "@statseeker/api": ["libraries/api/src"],
+         "@statseeker/api/*": ["libraries/api/src/*"],
+         "@statseeker/components": ["libraries/components/src"],
+         "@statseeker/components/*": ["libraries/components/src/*"],
+         "@statseeker/hooks": ["libraries/hooks/src"],
+         "@statseeker/hooks/*": ["libraries/hooks/src/*"],
+         "@statseeker/ui": ["libraries/ui/src"],
+         "@statseeker/ui/*": ["libraries/ui/src/*"],
+         "@statseeker/utils": ["libraries/utils/src"],
+         "@statseeker/utils/*": ["libraries/utils/src/*"],
+         "@tooling/configuration": ["libraries/tooling/configuration/src"],
+         "~/api": ["packages/oa/ping-manager/src/api"],
+         "~/api/*": ["packages/oa/ping-manager/src/api/*"],
+         "~/components": ["packages/oa/ping-manager/src/components"],
+         "~/components/*": ["packages/oa/ping-manager/src/components/*"],
+         "~/config": ["packages/oa/ping-manager/src/config"],
+         "~/config/*": ["packages/oa/ping-manager/src/config/*"],
+         "~/contexts": ["packages/oa/ping-manager/src/contexts"],
+         "~/contexts/*": ["packages/oa/ping-manager/src/contexts/*"],
+         "~/features": ["packages/oa/ping-manager/src/features"],
+         "~/features/*": ["packages/oa/ping-manager/src/features/*"],
+         "~/hooks": ["packages/oa/ping-manager/src/hooks"],
+         "~/hooks/*": ["packages/oa/ping-manager/src/hooks/*"],
+         "~/lib": ["packages/oa/ping-manager/src/lib"],
+         "~/lib/*": ["packages/oa/ping-manager/src/lib/*"],
+         "~/providers": ["packages/oa/ping-manager/src/providers"],
+         "~/providers/*": ["packages/oa/ping-manager/src/providers/*"],
+         "~/reducers": ["packages/oa/ping-manager/src/reducers"],
+         "~/reducers/*": ["packages/oa/ping-manager/src/reducers/*"],
+         "~/routes": ["packages/oa/ping-manager/src/routes"],
+         "~/routes/*": ["packages/oa/ping-manager/src/routes/*"],
+         "~/test": ["packages/oa/ping-manager/src/test"],
+         "~/test/*": ["packages/oa/ping-manager/src/test/*"],
+         "~/types": ["packages/oa/ping-manager/src/types"],
+         "~/types/*": ["packages/oa/ping-manager/src/types/*"],
+         "~/utils": ["packages/oa/ping-manager/src/utils"],
+         "~/utils/*": ["packages/oa/ping-manager/src/utils/*"]
+      }
+   },
+   "files": [],
+   "include": ["src"],
+   "references": [
+      {
+         "path": "./tsconfig.app.json"
+      },
+      {
+         "path": "./tsconfig.spec.json"
+      }
+   ]
+}

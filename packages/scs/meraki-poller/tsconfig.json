@@ -1,0 +1,71 @@
+{
+   "extends": "../../../tsconfig.base.json",
+   "compilerOptions": {
+      "target": "ESNext",
+      "useDefineForClassFields": true,
+      "module": "ESNext",
+      "strict": true,
+      "moduleResolution": "Node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "types": ["vite/client"],
+      "noEmit": true,
+      "lib": ["DOM", "DOM.Iterable", "ESNext"],
+      "allowJs": false,
+      "esModuleInterop": false,
+      "skipLibCheck": true,
+      "allowSyntheticDefaultImports": true,
+      "forceConsistentCasingInFileNames": true,
+      "jsx": "react-jsx",
+      "paths": {
+         "@statseeker": ["libraries"],
+         "@statseeker/api": ["libraries/api/src"],
+         "@statseeker/api/*": ["libraries/api/src/*"],
+         "@statseeker/components": ["libraries/components/src"],
+         "@statseeker/components/*": ["libraries/components/src/*"],
+         "@statseeker/hooks": ["libraries/hooks/src"],
+         "@statseeker/hooks/*": ["libraries/hooks/src/*"],
+         "@statseeker/ui": ["libraries/ui/src"],
+         "@statseeker/ui/*": ["libraries/ui/src/*"],
+         "@statseeker/utils": ["libraries/utils/src"],
+         "@statseeker/utils/*": ["libraries/utils/src/*"],
+         "@tooling/configuration": ["libraries/tooling/configuration/src"],
+         "~/api": ["packages/scs/meraki-poller/src/api"],
+         "~/api/*": ["packages/scs/meraki-poller/src/api/*"],
+         "~/components": ["packages/scs/meraki-poller/src/components"],
+         "~/components/*": ["packages/scs/meraki-poller/src/components/*"],
+         "~/config": ["packages/scs/meraki-poller/src/config"],
+         "~/config/*": ["packages/scs/meraki-poller/src/config/*"],
+         "~/contexts": ["packages/scs/meraki-poller/src/contexts"],
+         "~/contexts/*": ["packages/scs/meraki-poller/src/contexts/*"],
+         "~/features": ["packages/scs/meraki-poller/src/features"],
+         "~/features/*": ["packages/scs/meraki-poller/src/features/*"],
+         "~/hooks": ["packages/scs/meraki-poller/src/hooks"],
+         "~/hooks/*": ["packages/scs/meraki-poller/src/hooks/*"],
+         "~/lib": ["packages/scs/meraki-poller/src/lib"],
+         "~/lib/*": ["packages/scs/meraki-poller/src/lib/*"],
+         "~/providers": ["packages/scs/meraki-poller/src/providers"],
+         "~/providers/*": ["packages/scs/meraki-poller/src/providers/*"],
+         "~/reducers": ["packages/scs/meraki-poller/src/reducers"],
+         "~/reducers/*": ["packages/scs/meraki-poller/src/reducers/*"],
+         "~/routes": ["packages/scs/meraki-poller/src/routes"],
+         "~/routes/*": ["packages/scs/meraki-poller/src/routes/*"],
+         "~/test": ["packages/scs/meraki-poller/src/test"],
+         "~/test/*": ["packages/scs/meraki-poller/src/test/*"],
+         "~/types": ["packages/scs/meraki-poller/src/types"],
+         "~/types/*": ["packages/scs/meraki-poller/src/types/*"],
+         "~/utils": ["packages/scs/meraki-poller/src/utils"],
+         "~/utils/*": ["packages/scs/meraki-poller/src/utils/*"]
+      }
+   },
+   "files": [],
+   "include": ["src"],
+   "references": [
+      {
+         "path": "./tsconfig.app.json"
+      },
+      {
+         "path": "./tsconfig.spec.json"
+      }
+   ]
+}

@@ -1,0 +1,71 @@
+{
+   "extends": "../../../../tsconfig.base.json",
+   "compilerOptions": {
+      "target": "ESNext",
+      "useDefineForClassFields": true,
+      "module": "ESNext",
+      "strict": true,
+      "moduleResolution": "Node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "types": ["vite/client"],
+      "noEmit": true,
+      "lib": ["DOM", "DOM.Iterable", "ESNext"],
+      "allowJs": false,
+      "esModuleInterop": false,
+      "skipLibCheck": true,
+      "allowSyntheticDefaultImports": true,
+      "forceConsistentCasingInFileNames": true,
+      "jsx": "react-jsx",
+      "paths": {
+         "@statseeker": ["libraries"],
+         "@statseeker/api": ["libraries/api/src"],
+         "@statseeker/api/*": ["libraries/api/src/*"],
+         "@statseeker/components": ["libraries/components/src"],
+         "@statseeker/components/*": ["libraries/components/src/*"],
+         "@statseeker/hooks": ["libraries/hooks/src"],
+         "@statseeker/hooks/*": ["libraries/hooks/src/*"],
+         "@statseeker/ui": ["libraries/ui/src"],
+         "@statseeker/ui/*": ["libraries/ui/src/*"],
+         "@statseeker/utils": ["libraries/utils/src"],
+         "@statseeker/utils/*": ["libraries/utils/src/*"],
+         "@tooling/configuration": ["libraries/tooling/configuration/src"],
+         "~/api": ["packages/scs/scanbi/scanbi_aviation/src/api"],
+         "~/api/*": ["packages/scs/scanbi/scanbi_aviation/src/api/*"],
+         "~/components": ["packages/scs/scanbi/scanbi_aviation/src/components"],
+         "~/components/*": ["packages/scs/scanbi/scanbi_aviation/src/components/*"],
+         "~/config": ["packages/scs/scanbi/scanbi_aviation/src/config"],
+         "~/config/*": ["packages/scs/scanbi/scanbi_aviation/src/config/*"],
+         "~/contexts": ["packages/scs/scanbi/scanbi_aviation/src/contexts"],
+         "~/contexts/*": ["packages/scs/scanbi/scanbi_aviation/src/contexts/*"],
+         "~/features": ["packages/scs/scanbi/scanbi_aviation/src/features"],
+         "~/features/*": ["packages/scs/scanbi/scanbi_aviation/src/features/*"],
+         "~/hooks": ["packages/scs/scanbi/scanbi_aviation/src/hooks"],
+         "~/hooks/*": ["packages/scs/scanbi/scanbi_aviation/src/hooks/*"],
+         "~/lib": ["packages/scs/scanbi/scanbi_aviation/src/lib"],
+         "~/lib/*": ["packages/scs/scanbi/scanbi_aviation/src/lib/*"],
+         "~/providers": ["packages/scs/scanbi/scanbi_aviation/src/providers"],
+         "~/providers/*": ["packages/scs/scanbi/scanbi_aviation/src/providers/*"],
+         "~/reducers": ["packages/scs/scanbi/scanbi_aviation/src/reducers"],
+         "~/reducers/*": ["packages/scs/scanbi/scanbi_aviation/src/reducers/*"],
+         "~/routes": ["packages/scs/scanbi/scanbi_aviation/src/routes"],
+         "~/routes/*": ["packages/scs/scanbi/scanbi_aviation/src/routes/*"],
+         "~/test": ["packages/scs/scanbi/scanbi_aviation/src/test"],
+         "~/test/*": ["packages/scs/scanbi/scanbi_aviation/src/test/*"],
+         "~/types": ["packages/scs/scanbi/scanbi_aviation/src/types"],
+         "~/types/*": ["packages/scs/scanbi/scanbi_aviation/src/types/*"],
+         "~/utils": ["packages/scs/scanbi/scanbi_aviation/src/utils"],
+         "~/utils/*": ["packages/scs/scanbi/scanbi_aviation/src/utils/*"]
+      }
+   },
+   "files": [],
+   "include": ["src"],
+   "references": [
+      {
+         "path": "./tsconfig.app.json"
+      },
+      {
+         "path": "./tsconfig.spec.json"
+      }
+   ]
+}

@@ -1,0 +1,71 @@
+{
+   "extends": "../../../tsconfig.base.json",
+   "compilerOptions": {
+      "target": "ESNext",
+      "useDefineForClassFields": true,
+      "module": "ESNext",
+      "strict": true,
+      "moduleResolution": "Node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "types": ["vite/client"],
+      "noEmit": true,
+      "lib": ["DOM", "DOM.Iterable", "ESNext"],
+      "allowJs": false,
+      "esModuleInterop": false,
+      "skipLibCheck": true,
+      "allowSyntheticDefaultImports": true,
+      "forceConsistentCasingInFileNames": true,
+      "jsx": "react-jsx",
+      "paths": {
+         "@statseeker": ["libraries"],
+         "@statseeker/api": ["libraries/api/src"],
+         "@statseeker/api/*": ["libraries/api/src/*"],
+         "@statseeker/components": ["libraries/components/src"],
+         "@statseeker/components/*": ["libraries/components/src/*"],
+         "@statseeker/hooks": ["libraries/hooks/src"],
+         "@statseeker/hooks/*": ["libraries/hooks/src/*"],
+         "@statseeker/ui": ["libraries/ui/src"],
+         "@statseeker/ui/*": ["libraries/ui/src/*"],
+         "@statseeker/utils": ["libraries/utils/src"],
+         "@statseeker/utils/*": ["libraries/utils/src/*"],
+         "@tooling/configuration": ["libraries/tooling/configuration/src"],
+         "~/api": ["packages/oa/ping-discover/src/api"],
+         "~/api/*": ["packages/oa/ping-discover/src/api/*"],
+         "~/components": ["packages/oa/ping-discover/src/components"],
+         "~/components/*": ["packages/oa/ping-discover/src/components/*"],
+         "~/config": ["packages/oa/ping-discover/src/config"],
+         "~/config/*": ["packages/oa/ping-discover/src/config/*"],
+         "~/contexts": ["packages/oa/ping-discover/src/contexts"],
+         "~/contexts/*": ["packages/oa/ping-discover/src/contexts/*"],
+         "~/features": ["packages/oa/ping-discover/src/features"],
+         "~/features/*": ["packages/oa/ping-discover/src/features/*"],
+         "~/hooks": ["packages/oa/ping-discover/src/hooks"],
+         "~/hooks/*": ["packages/oa/ping-discover/src/hooks/*"],
+         "~/lib": ["packages/oa/ping-discover/src/lib"],
+         "~/lib/*": ["packages/oa/ping-discover/src/lib/*"],
+         "~/providers": ["packages/oa/ping-discover/src/providers"],
+         "~/providers/*": ["packages/oa/ping-discover/src/providers/*"],
+         "~/reducers": ["packages/oa/ping-discover/src/reducers"],
+         "~/reducers/*": ["packages/oa/ping-discover/src/reducers/*"],
+         "~/routes": ["packages/oa/ping-discover/src/routes"],
+         "~/routes/*": ["packages/oa/ping-discover/src/routes/*"],
+         "~/test": ["packages/oa/ping-discover/src/test"],
+         "~/test/*": ["packages/oa/ping-discover/src/test/*"],
+         "~/types": ["packages/oa/ping-discover/src/types"],
+         "~/types/*": ["packages/oa/ping-discover/src/types/*"],
+         "~/utils": ["packages/oa/ping-discover/src/utils"],
+         "~/utils/*": ["packages/oa/ping-discover/src/utils/*"]
+      }
+   },
+   "files": [],
+   "include": ["src"],
+   "references": [
+      {
+         "path": "./tsconfig.app.json"
+      },
+      {
+         "path": "./tsconfig.spec.json"
+      }
+   ]
+}

@@ -1,0 +1,74 @@
+{
+   "extends": "<%= rootTsConfigPath %>",
+   "compilerOptions": {
+      "target": "ESNext",
+      "useDefineForClassFields": true,
+      "module": "ESNext",
+      "strict": true,
+      "moduleResolution": "Node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "types": ["vite/client"],
+      "noEmit": true,
+      "lib": ["DOM", "DOM.Iterable", "ESNext"],
+      "allowJs": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "allowSyntheticDefaultImports": true,
+      "forceConsistentCasingInFileNames": true,
+      "jsx": "react-jsx",
+      "paths": {
+         "@statseeker": ["libraries"],
+
+         "@statseeker/api":   ["libraries/api/src"],
+         "@statseeker/api/*": ["libraries/api/src/*"],
+         "@statseeker/components":   ["libraries/components/src"],
+         "@statseeker/components/*": ["libraries/components/src/*"],
+         "@statseeker/hooks":   ["libraries/hooks/src"],
+         "@statseeker/hooks/*": ["libraries/hooks/src/*"],
+         "@statseeker/ui":   ["libraries/ui/src"],
+         "@statseeker/ui/*": ["libraries/ui/src/*"],
+         "@statseeker/utils":   ["libraries/utils/src"],
+         "@statseeker/utils/*": ["libraries/utils/src/*"],
+
+         "@tooling/configuration": ["libraries/tooling/configuration/src"],
+
+         "~/api":          ["packages/<%= projectDirectory %>/src/api"],
+         "~/api/*":        ["packages/<%= projectDirectory %>/src/api/*"],
+         "~/components":   ["packages/<%= projectDirectory %>/src/components"],
+         "~/components/*": ["packages/<%= projectDirectory %>/src/components/*"],
+         "~/config":       ["packages/<%= projectDirectory %>/src/config"],
+         "~/config/*":     ["packages/<%= projectDirectory %>/src/config/*"],
+         "~/contexts":     ["packages/<%= projectDirectory %>/src/contexts"],
+         "~/contexts/*":   ["packages/<%= projectDirectory %>/src/contexts/*"],
+         "~/features":     ["packages/<%= projectDirectory %>/src/features"],
+         "~/features/*":   ["packages/<%= projectDirectory %>/src/features/*"],
+         "~/hooks":        ["packages/<%= projectDirectory %>/src/hooks"],
+         "~/hooks/*":      ["packages/<%= projectDirectory %>/src/hooks/*"],
+         "~/lib":          ["packages/<%= projectDirectory %>/src/lib"],
+         "~/lib/*":        ["packages/<%= projectDirectory %>/src/lib/*"],
+         "~/providers":    ["packages/<%= projectDirectory %>/src/providers"],
+         "~/providers/*":  ["packages/<%= projectDirectory %>/src/providers/*"],
+         "~/reducers":     ["packages/<%= projectDirectory %>/src/reducers"],
+         "~/reducers/*":   ["packages/<%= projectDirectory %>/src/reducers/*"],
+         "~/routes":       ["packages/<%= projectDirectory %>/src/routes"],
+         "~/routes/*":     ["packages/<%= projectDirectory %>/src/routes/*"],
+         "~/test":         ["packages/<%= projectDirectory %>/src/test"],
+         "~/test/*":       ["packages/<%= projectDirectory %>/src/test/*"],
+         "~/types":        ["packages/<%= projectDirectory %>/src/types"],
+         "~/types/*":      ["packages/<%= projectDirectory %>/src/types/*"],
+         "~/utils":        ["packages/<%= projectDirectory %>/src/utils"],
+         "~/utils/*":      ["packages/<%= projectDirectory %>/src/utils/*"]
+      },
+   },
+   "files": [],
+   "include": [],
+   "references": [
+      {
+         "path": "./tsconfig.app.json"
+      },
+      {
+         "path": "./tsconfig.spec.json"
+      }
+   ]
+}

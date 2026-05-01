@@ -1,0 +1,73 @@
+{
+   "extends": "../../../tsconfig.base.json",
+   "compilerOptions": {
+      "target": "ESNext",
+      "useDefineForClassFields": true,
+      "module": "ESNext",
+      "strict": true,
+      "moduleResolution": "Node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "types": ["vite/client"],
+      "noEmit": true,
+      "lib": ["DOM", "DOM.Iterable", "ESNext"],
+      "allowJs": false,
+      "esModuleInterop": false,
+      "skipLibCheck": true,
+      "allowSyntheticDefaultImports": true,
+      "forceConsistentCasingInFileNames": true,
+      "jsx": "react-jsx",
+      "paths": {
+         "@statseeker": ["libraries"],
+         "@statseeker/api": ["libraries/api/src"],
+         "@statseeker/api/*": ["libraries/api/src/*"],
+         "@statseeker/components": ["libraries/components/src"],
+         "@statseeker/components/*": ["libraries/components/src/*"],
+         "@statseeker/hooks": ["libraries/hooks/src"],
+         "@statseeker/hooks/*": ["libraries/hooks/src/*"],
+         "@statseeker/ui": ["libraries/ui/src"],
+         "@statseeker/ui/*": ["libraries/ui/src/*"],
+         "@statseeker/utils": ["libraries/utils/src"],
+         "@statseeker/utils/*": ["libraries/utils/src/*"],
+         "@tooling/configuration": ["libraries/tooling/configuration/src"],
+         "~/api": ["packages/discovery/devices/src/api"],
+         "~/api/*": ["packages/discovery/devices/src/api/*"],
+         "~/components": ["packages/discovery/devices/src/components"],
+         "~/components/*": ["packages/discovery/devices/src/components/*"],
+         "~/config": ["packages/discovery/devices/src/config"],
+         "~/config/*": ["packages/discovery/devices/src/config/*"],
+         "~/contexts": ["packages/discovery/devices/src/contexts"],
+         "~/contexts/*": ["packages/discovery/devices/src/contexts/*"],
+         "~/features": ["packages/discovery/devices/src/features"],
+         "~/features/*": ["packages/discovery/devices/src/features/*"],
+         "~/hooks": ["packages/discovery/devices/src/hooks"],
+         "~/hooks/*": ["packages/discovery/devices/src/hooks/*"],
+         "~/lib": ["packages/discovery/devices/src/lib"],
+         "~/lib/*": ["packages/discovery/devices/src/lib/*"],
+         "~/providers": ["packages/discovery/devices/src/providers"],
+         "~/providers/*": ["packages/discovery/devices/src/providers/*"],
+         "~/reducers": ["packages/discovery/devices/src/reducers"],
+         "~/reducers/*": ["packages/discovery/devices/src/reducers/*"],
+         "~/routes": ["packages/discovery/devices/src/routes"],
+         "~/routes/*": ["packages/discovery/devices/src/routes/*"],
+         "~/test": ["packages/discovery/devices/src/test"],
+         "~/test/*": ["packages/discovery/devices/src/test/*"],
+         "~/types": ["packages/discovery/devices/src/types"],
+         "~/types/*": ["packages/discovery/devices/src/types/*"],
+         "~/utils": ["packages/discovery/devices/src/utils"],
+         "~/utils/*": ["packages/discovery/devices/src/utils/*"],
+         "~/styles": ["packages/discovery/devices/src/styles"],
+         "~/styles/*": ["packages/discovery/devices/src/styles/*"]
+      }
+   },
+   "files": [],
+   "include": ["src"],
+   "references": [
+      {
+         "path": "./tsconfig.app.json"
+      },
+      {
+         "path": "./tsconfig.spec.json"
+      }
+   ]
+}

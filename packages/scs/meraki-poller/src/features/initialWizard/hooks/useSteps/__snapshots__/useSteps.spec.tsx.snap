@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<useSteps /> > should return the right steps 1`] = `
+[
+  {
+    "component": <ConnectionForm
+      nextStep={[Function]}
+    />,
+    "index": 0,
+    "title": "Setup connection",
+  },
+  {
+    "component": <RateLimitSetter
+      onNext={[Function]}
+      onPrevious={[Function]}
+    />,
+    "index": 1,
+    "title": "Set the rate limit",
+  },
+  {
+    "component": <SuccessSummary
+      onContinue={[Function]}
+      organizationsFound={0}
+    />,
+    "index": 2,
+    "title": "Finish",
+  },
+]
+`;

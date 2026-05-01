@@ -1,0 +1,73 @@
+{
+   "extends": "../../tsconfig.base.json",
+   "compilerOptions": {
+      "target": "ESNext",
+      "useDefineForClassFields": true,
+      "module": "ESNext",
+      "strict": true,
+      "moduleResolution": "Node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "types": ["vite/client"],
+      "noEmit": true,
+      "lib": ["DOM", "DOM.Iterable", "ESNext"],
+      "allowJs": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "allowSyntheticDefaultImports": true,
+      "forceConsistentCasingInFileNames": true,
+      "jsx": "react-jsx",
+      "paths": {
+         "@statseeker": ["libraries"],
+         "@statseeker/api": ["libraries/api/src"],
+         "@statseeker/api/*": ["libraries/api/src/*"],
+         "@statseeker/components": ["libraries/components/src"],
+         "@statseeker/components/*": ["libraries/components/src/*"],
+         "@statseeker/hooks": ["libraries/hooks/src"],
+         "@statseeker/hooks/*": ["libraries/hooks/src/*"],
+         "@statseeker/ui": ["libraries/ui/src"],
+         "@statseeker/ui/*": ["libraries/ui/src/*"],
+         "@statseeker/utils": ["libraries/utils/src"],
+         "@statseeker/utils/*": ["libraries/utils/src/*"],
+         "@tooling/configuration": ["libraries/tooling/configuration/src"],
+         "~/api": ["packages/globalsearch/src/api"],
+         "~/api/*": ["packages/globalsearch/src/api/*"],
+         "~/components": ["packages/globalsearch/src/components"],
+         "~/components/*": ["packages/globalsearch/src/components/*"],
+         "~/config": ["packages/globalsearch/src/config"],
+         "~/config/*": ["packages/globalsearch/src/config/*"],
+         "~/contexts": ["packages/globalsearch/src/contexts"],
+         "~/contexts/*": ["packages/globalsearch/src/contexts/*"],
+         "~/features": ["packages/globalsearch/src/features"],
+         "~/features/*": ["packages/globalsearch/src/features/*"],
+         "~/hooks": ["packages/globalsearch/src/hooks"],
+         "~/hooks/*": ["packages/globalsearch/src/hooks/*"],
+         "~/lib": ["packages/globalsearch/src/lib"],
+         "~/lib/*": ["packages/globalsearch/src/lib/*"],
+         "~/providers": ["packages/globalsearch/src/providers"],
+         "~/providers/*": ["packages/globalsearch/src/providers/*"],
+         "~/reducers": ["packages/globalsearch/src/reducers"],
+         "~/reducers/*": ["packages/globalsearch/src/reducers/*"],
+         "~/routes": ["packages/globalsearch/src/routes"],
+         "~/routes/*": ["packages/globalsearch/src/routes/*"],
+         "~/test": ["packages/globalsearch/src/test"],
+         "~/test/*": ["packages/globalsearch/src/test/*"],
+         "~/types": ["packages/globalsearch/src/types"],
+         "~/types/*": ["packages/globalsearch/src/types/*"],
+         "~/utils": ["packages/globalsearch/src/utils"],
+         "~/utils/*": ["packages/globalsearch/src/utils/*"],
+         "~/mocks": ["packages/globalsearch/src/test/server/mocks"],
+         "~/mocks/*": ["packages/globalsearch/src/test/server/mocks/*"]
+      }
+   },
+   "files": [],
+   "include": ["src"],
+   "references": [
+      {
+         "path": "./tsconfig.app.json"
+      },
+      {
+         "path": "./tsconfig.spec.json"
+      }
+   ]
+}

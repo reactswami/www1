@@ -1,0 +1,74 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`button theme > should match the snapshot (button hasn't changed) 1`] = `
+{
+  "parts": [
+    "addon",
+    "field",
+    "element",
+    "group",
+  ],
+  "sizes": {
+    "lg": {
+      "addon": {
+        "borderRadius": "0.125rem",
+        "fontSize": ".75rem",
+        "h": 10,
+      },
+      "element": {
+        "borderRadius": "0.125rem",
+        "fontSize": ".75rem",
+        "h": 10,
+      },
+      "field": {
+        "borderRadius": "0.125rem",
+        "fontSize": "md",
+        "h": 10,
+      },
+      "group": {
+        "--input-height": "sizes.10",
+      },
+    },
+    "md": {
+      "addon": {
+        "borderRadius": "0.125rem",
+        "fontSize": ".75rem",
+        "h": 8,
+      },
+      "element": {
+        "borderRadius": "0.125rem",
+        "fontSize": ".75rem",
+        "h": 8,
+      },
+      "field": {
+        "borderRadius": "0.125rem",
+        "fontSize": "sm",
+        "h": 8,
+      },
+      "group": {
+        "--input-height": "sizes.8",
+      },
+    },
+    "sm": {
+      "addon": {
+        "borderRadius": "0.125rem",
+        "fontSize": ".75rem",
+        "h": 7,
+      },
+      "element": {
+        "borderRadius": "0.125rem",
+        "fontSize": ".75rem",
+        "h": 7,
+      },
+      "field": {
+        "borderRadius": "0.125rem",
+        "fontSize": "sm",
+        "h": 7,
+      },
+      "group": {
+        "--input-height": "sizes.7",
+      },
+    },
+  },
+}
+`;

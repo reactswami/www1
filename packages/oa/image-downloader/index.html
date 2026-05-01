@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8" />
+      <title>Observability appliances - Image downloader</title>
+      <base href="/" />
+      <link rel="stylesheet" type="text/css" href="/css/theme.admin.css" />
+      <link rel="stylesheet" type="text/css" href="./src/styles.css" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+   </head>
+   <body>
+      <main>
+         <h1>
+            Observability Appliance:
+            <span class="name_placeholder"></span> Image
+         </h1>
+         <div class="link">
+            <a href="https://docs.statseeker.com/oa" target="_blank">Link to documentation</a>
+         </div>
+         <div class="grid card">
+            <h2 class="grid__title">Recommended system requirements</h2>
+            <p>Minimum CPU</p>
+            <p>2 GHz dual-core processor or better (SSE4.2 instruction set required)</p>
+            <p>Minimum Memory</p>
+            <p>4 GB</p>
+            <p>Minimum Free Disk Space</p>
+            <p>16 GB</p>
+            <p>Platform</p>
+            <p>amd64 (x86_64)</p>
+         </div>
+         <p class="footnote">
+            Media - For physical installation and virtualized installations please refer to
+            documentation
+         </p>
+         <div id="download_buttons_container" class="download_buttons__container download">
+            <h2 class="download_buttons__title">Select image format</h2>
+            <div id="download_buttons" class="download_buttons__wrapper">
+               <!-- Download buttons will be appended here -->
+            </div>
+         </div>
+         <div id="download_progress" class="download hidden">
+            <h2>Building image</h2>
+            <p>
+               Building <span class="format_placeholder"></span> image for
+               <span class="name_placeholder name_placeholder--styled"></span>.
+            </p>
+            <p>This can take up to 10 minutes depending on the format. Please wait...</p>
+         </div>
+         <div id="download_success" class="download hidden">
+            <h2>Image Ready</h2>
+            <p>
+               Image for <span class="name_placeholder name_placeholder--styled"></span> ready:
+               <a id="download_success__link"></a>
+            </p>
+         </div>
+         <p id="download_error" class="error hidden"></p>
+      </main>
+      <script type="module" src="/src/main.ts"></script>
+   </body>
+</html>

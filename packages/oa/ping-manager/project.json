@@ -1,0 +1,27 @@
+{
+   "name": "oa-ping-manager",
+   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+   "version": "0.0.1",
+   "projectType": "application",
+   "sourceRoot": "packages/oa/ping-manager/src",
+   "tags": ["oa"],
+   "targets": {
+      "build": {
+         "executor": "@nx/vite:build",
+         "options": {
+            "outputPath": "dist/packages/oa-ping-manager",
+            "deleteOutputPath": true,
+            "tsConfig": "packages/oa/ping-manager/tsconfig.app.json"
+         }
+      },
+      "lint": {
+         "executor": "nx:run-commands",
+         "outputs": ["{options.outputFile}"],
+         "options": {
+            "command": "eslint . --quiet",
+            "cwd": "packages/oa/ping-manager",
+            "lintFilePatterns": ["packages/oa/ping-manager/**/*.{ts,tsx,js,jsx}"]
+         }
+      }
+   }
+}

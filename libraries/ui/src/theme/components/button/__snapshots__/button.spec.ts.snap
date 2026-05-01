@@ -1,0 +1,67 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`button theme > should match the snapshot (button hasn't changed) 1`] = `
+{
+  "baseStyle": {
+    "borderRadius": "sm",
+    "fontFamily": "var(--font-family)",
+    "fontWeight": "bold",
+    "letterSpacing": "calc(1rem * 0.025)",
+    "textTransform": "capitalize",
+  },
+  "defaultProps": {
+    "colorScheme": "primary",
+    "size": "sm",
+    "variant": "solid",
+  },
+  "variants": {
+    "ghost": {
+      "_active": {
+        "background": "var(--chakra-colors-primary-50)",
+        "boxShadow": "var(--chakra-shadows-inner)",
+      },
+      "_disabled": {
+        "_hover": {
+          "boxShadow": "var(--chakra-shadows-none)",
+        },
+        "boxShadow": "var(--chakra-shadows-none)",
+      },
+      "_hover": {
+        "boxShadow": "var(--chakra-shadows-md)",
+      },
+    },
+    "outline": {
+      "_active": {
+        "background": "var(--chakra-colors-primary-50)",
+        "boxShadow": "var(--chakra-shadows-inner)",
+      },
+      "_disabled": {
+        "_hover": {
+          "boxShadow": "var(--chakra-shadows-none)",
+        },
+        "boxShadow": "var(--chakra-shadows-none)",
+      },
+      "_hover": {
+        "boxShadow": "var(--chakra-shadows-md)",
+      },
+      "boxShadow": "var(--chakra-shadows-sm)",
+    },
+    "solid": {
+      "_active": {
+        "background": "var(--chakra-colors-primary-50)",
+        "boxShadow": "var(--chakra-shadows-inner)",
+      },
+      "_disabled": {
+        "_hover": {
+          "boxShadow": "var(--chakra-shadows-none)",
+        },
+        "boxShadow": "var(--chakra-shadows-none)",
+      },
+      "_hover": {
+        "boxShadow": "var(--chakra-shadows-md)",
+      },
+      "boxShadow": "var(--chakra-shadows-sm)",
+    },
+  },
+}
+`;

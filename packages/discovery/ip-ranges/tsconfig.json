@@ -1,0 +1,71 @@
+{
+   "extends": "../../../tsconfig.base.json",
+   "compilerOptions": {
+      "target": "ESNext",
+      "useDefineForClassFields": true,
+      "module": "ESNext",
+      "strict": true,
+      "moduleResolution": "Node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "types": ["vite/client"],
+      "noEmit": true,
+      "lib": ["DOM", "DOM.Iterable", "ESNext"],
+      "allowJs": false,
+      "esModuleInterop": false,
+      "skipLibCheck": true,
+      "allowSyntheticDefaultImports": true,
+      "forceConsistentCasingInFileNames": true,
+      "jsx": "react-jsx",
+      "paths": {
+         "@statseeker": ["libraries"],
+         "@statseeker/api": ["libraries/api/src"],
+         "@statseeker/api/*": ["libraries/api/src/*"],
+         "@statseeker/components": ["libraries/components/src"],
+         "@statseeker/components/*": ["libraries/components/src/*"],
+         "@statseeker/hooks": ["libraries/hooks/src"],
+         "@statseeker/hooks/*": ["libraries/hooks/src/*"],
+         "@statseeker/ui": ["libraries/ui/src"],
+         "@statseeker/ui/*": ["libraries/ui/src/*"],
+         "@statseeker/utils": ["libraries/utils/src"],
+         "@statseeker/utils/*": ["libraries/utils/src/*"],
+         "@tooling/configuration": ["libraries/tooling/configuration/src"],
+         "~/api": ["packages/discovery/ip-ranges/src/api"],
+         "~/api/*": ["packages/discovery/ip-ranges/src/api/*"],
+         "~/components": ["packages/discovery/ip-ranges/src/components"],
+         "~/components/*": ["packages/discovery/ip-ranges/src/components/*"],
+         "~/config": ["packages/discovery/ip-ranges/src/config"],
+         "~/config/*": ["packages/discovery/ip-ranges/src/config/*"],
+         "~/contexts": ["packages/discovery/ip-ranges/src/contexts"],
+         "~/contexts/*": ["packages/discovery/ip-ranges/src/contexts/*"],
+         "~/features": ["packages/discovery/ip-ranges/src/features"],
+         "~/features/*": ["packages/discovery/ip-ranges/src/features/*"],
+         "~/hooks": ["packages/discovery/ip-ranges/src/hooks"],
+         "~/hooks/*": ["packages/discovery/ip-ranges/src/hooks/*"],
+         "~/lib": ["packages/discovery/ip-ranges/src/lib"],
+         "~/lib/*": ["packages/discovery/ip-ranges/src/lib/*"],
+         "~/providers": ["packages/discovery/ip-ranges/src/providers"],
+         "~/providers/*": ["packages/discovery/ip-ranges/src/providers/*"],
+         "~/reducers": ["packages/discovery/ip-ranges/src/reducers"],
+         "~/reducers/*": ["packages/discovery/ip-ranges/src/reducers/*"],
+         "~/routes": ["packages/discovery/ip-ranges/src/routes"],
+         "~/routes/*": ["packages/discovery/ip-ranges/src/routes/*"],
+         "~/test": ["packages/discovery/ip-ranges/src/test"],
+         "~/test/*": ["packages/discovery/ip-ranges/src/test/*"],
+         "~/types": ["packages/discovery/ip-ranges/src/types"],
+         "~/types/*": ["packages/discovery/ip-ranges/src/types/*"],
+         "~/utils": ["packages/discovery/ip-ranges/src/utils"],
+         "~/utils/*": ["packages/discovery/ip-ranges/src/utils/*"]
+      }
+   },
+   "files": [],
+   "include": ["src"],
+   "references": [
+      {
+         "path": "./tsconfig.app.json"
+      },
+      {
+         "path": "./tsconfig.spec.json"
+      }
+   ]
+}

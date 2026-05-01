@@ -1,0 +1,74 @@
+{
+   "extends": "../../../tsconfig.base.json",
+   "compilerOptions": {
+      "target": "ESNext",
+      "useDefineForClassFields": true,
+      "module": "ESNext",
+      "strict": true,
+      "moduleResolution": "Node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "types": ["vite/client"],
+      "noEmit": true,
+      "lib": ["DOM", "DOM.Iterable", "ESNext"],
+      "allowJs": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "allowSyntheticDefaultImports": true,
+      "forceConsistentCasingInFileNames": true,
+      "jsx": "react-jsx",
+      "paths": {
+         "@statseeker": ["libraries"],
+
+         "@statseeker/api": ["libraries/api/src"],
+         "@statseeker/api/*": ["libraries/api/src/*"],
+         "@statseeker/components": ["libraries/components/src"],
+         "@statseeker/components/*": ["libraries/components/src/*"],
+         "@statseeker/hooks": ["libraries/hooks/src"],
+         "@statseeker/hooks/*": ["libraries/hooks/src/*"],
+         "@statseeker/ui": ["libraries/ui/src"],
+         "@statseeker/ui/*": ["libraries/ui/src/*"],
+         "@statseeker/utils": ["libraries/utils/src"],
+         "@statseeker/utils/*": ["libraries/utils/src/*"],
+
+         "@tooling/configuration": ["libraries/tooling/configuration/src"],
+
+         "~/api": ["packages/admin_tool/user-management/src/api"],
+         "~/api/*": ["packages/admin_tool/user-management/src/api/*"],
+         "~/components": ["packages/admin_tool/user-management/src/components"],
+         "~/components/*": ["packages/admin_tool/user-management/src/components/*"],
+         "~/config": ["packages/admin_tool/user-management/src/config"],
+         "~/config/*": ["packages/admin_tool/user-management/src/config/*"],
+         "~/contexts": ["packages/admin_tool/user-management/src/contexts"],
+         "~/contexts/*": ["packages/admin_tool/user-management/src/contexts/*"],
+         "~/features": ["packages/admin_tool/user-management/src/features"],
+         "~/features/*": ["packages/admin_tool/user-management/src/features/*"],
+         "~/hooks": ["packages/admin_tool/user-management/src/hooks"],
+         "~/hooks/*": ["packages/admin_tool/user-management/src/hooks/*"],
+         "~/lib": ["packages/admin_tool/user-management/src/lib"],
+         "~/lib/*": ["packages/admin_tool/user-management/src/lib/*"],
+         "~/providers": ["packages/admin_tool/user-management/src/providers"],
+         "~/providers/*": ["packages/admin_tool/user-management/src/providers/*"],
+         "~/reducers": ["packages/admin_tool/user-management/src/reducers"],
+         "~/reducers/*": ["packages/admin_tool/user-management/src/reducers/*"],
+         "~/routes": ["packages/admin_tool/user-management/src/routes"],
+         "~/routes/*": ["packages/admin_tool/user-management/src/routes/*"],
+         "~/test": ["packages/admin_tool/user-management/src/test"],
+         "~/test/*": ["packages/admin_tool/user-management/src/test/*"],
+         "~/types": ["packages/admin_tool/user-management/src/types"],
+         "~/types/*": ["packages/admin_tool/user-management/src/types/*"],
+         "~/utils": ["packages/admin_tool/user-management/src/utils"],
+         "~/utils/*": ["packages/admin_tool/user-management/src/utils/*"]
+      }
+   },
+   "files": [],
+   "include": [],
+   "references": [
+      {
+         "path": "./tsconfig.app.json"
+      },
+      {
+         "path": "./tsconfig.spec.json"
+      }
+   ]
+}

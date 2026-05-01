@@ -1,0 +1,26 @@
+{
+   "name": "globalsearch",
+   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+   "projectType": "application",
+   "sourceRoot": "packages/globalsearch/src",
+   "tags": [],
+   "targets": {
+      "build": {
+         "executor": "@nx/vite:build",
+         "options": {
+            "outputPath": "dist/packages/globalsearch",
+            "deleteOutputPath": true,
+            "tsConfig": "packages/globalsearch/tsconfig.app.json"
+         }
+      },
+      "lint": {
+         "executor": "nx:run-commands",
+         "outputs": ["{options.outputFile}"],
+         "options": {
+            "command": "eslint . --quiet",
+            "cwd": "packages/globalsearch/src",
+            "lintFilePatterns": ["packages/globalsearch/**/*.{ts,tsx,js,jsx}"]
+         }
+      }
+   }
+}

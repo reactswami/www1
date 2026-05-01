@@ -1,0 +1,28 @@
+{
+   "name": "discovery-devices",
+   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+   "projectType": "application",   
+   "sourceRoot": "packages/discovery/devices/src",
+   "tags": [],
+   "targets": {
+      "build": {
+          "dependsOn": [            
+         ],
+         "executor": "@nx/vite:build",
+         "options": {
+            "outputPath": "dist/packages/discovery-devices",
+            "deleteOutputPath": true,
+            "tsConfig": "packages/discovery/devices/tsconfig.app.json"
+         }
+      },
+      "lint": {
+         "executor": "nx:run-commands",
+         "outputs": ["{options.outputFile}"],
+         "options": {
+            "command": "eslint . --quiet",
+            "cwd": "packages/discovery/devices/src",
+            "lintFilePatterns": ["packages/discovery/devices/**/*.{ts,tsx,js,jsx}"]
+         }
+      }
+   }
+}

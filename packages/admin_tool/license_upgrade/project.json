@@ -1,0 +1,26 @@
+{
+   "name": "license_upgrade",
+   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+   "projectType": "application",
+   "sourceRoot": "packages/admin_tool/license_upgrade/src",
+   "targets": {
+      "build": {
+         "executor": "@nx/vite:build",
+         "options": {
+            "outputPath": "dist/packages/license_upgrade",
+            "deleteOutputPath": true,
+            "tsConfig": "packages/admin_tool/license_upgrade/tsconfig.app.json"
+         }
+      },
+      "lint": {
+         "executor": "nx:run-commands",
+         "outputs": ["{options.outputFile}"],
+         "options": {
+            "command": "eslint . --quiet",
+            "cwd": "packages/admin_tool/license_upgrade/src",
+            "lintFilePatterns": ["packages/admin_tool/license_upgrade/**/*.{ts,tsx,js,jsx}"]
+         }
+      }
+   },
+   "tags": []
+}

@@ -1,0 +1,40 @@
+{
+   "extends": "../../tsconfig.base.json",
+   "compilerOptions": {
+      "module": "ESNext",
+      "jsx": "react-jsx",
+      "allowJs": true,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,
+      "noImplicitOverride": true,
+      "noPropertyAccessFromIndexSignature": false,
+      "noImplicitReturns": true,
+      "noFallthroughCasesInSwitch": true,
+      "paths": {
+         "@statseeker": ["libraries"],
+         "@statseeker/api": ["libraries/api/src"],
+         "@statseeker/api/*": ["libraries/api/src/*"],
+         "@statseeker/components": ["libraries/components/src"],
+         "@statseeker/components/*": ["libraries/components/src/*"],
+         "@statseeker/hooks": ["libraries/hooks/src"],
+         "@statseeker/hooks/*": ["libraries/hooks/src/*"],
+         "@statseeker/ui": ["libraries/ui/src"],
+         "@statseeker/ui/*": ["libraries/ui/src/*"],
+         "@statseeker/utils": ["libraries/utils/src"],
+         "@statseeker/utils/*": ["libraries/utils/src/*"],
+         "@tooling/configuration": ["libraries/tooling/configuration/src"]
+      }
+   },
+   "files": [],
+   "include": [],
+   "references": [
+      {
+         "path": "./tsconfig.lib.json"
+      },
+      {
+         "path": "./tsconfig.spec.json"
+      }
+   ]
+}

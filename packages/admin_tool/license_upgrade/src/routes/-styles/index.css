@@ -1,0 +1,15 @@
+.license-responsive-container {
+   container-type: inline-size;
+   min-width: 470px;
+   width: 100%;
+}
+
+.license-responsive {
+   flex-direction: column;
+}
+
+@container (min-width: 1100px) {
+   .license-responsive {
+      flex-direction: row;
+   }
+}

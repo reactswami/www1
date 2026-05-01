@@ -1,0 +1,71 @@
+{
+   "extends": "../../../tsconfig.base.json",
+   "compilerOptions": {
+      "target": "ESNext",
+      "useDefineForClassFields": true,
+      "module": "ESNext",
+      "strict": true,
+      "moduleResolution": "Node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "types": ["vite/client"],
+      "noEmit": true,
+      "lib": ["DOM", "DOM.Iterable", "ESNext"],
+      "allowJs": false,
+      "esModuleInterop": false,
+      "skipLibCheck": true,
+      "allowSyntheticDefaultImports": true,
+      "forceConsistentCasingInFileNames": true,
+      "jsx": "react-jsx",
+      "paths": {
+         "@statseeker": ["libraries"],
+         "@statseeker/api": ["libraries/api/src"],
+         "@statseeker/api/*": ["libraries/api/src/*"],
+         "@statseeker/components": ["libraries/components/src"],
+         "@statseeker/components/*": ["libraries/components/src/*"],
+         "@statseeker/hooks": ["libraries/hooks/src"],
+         "@statseeker/hooks/*": ["libraries/hooks/src/*"],
+         "@statseeker/ui": ["libraries/ui/src"],
+         "@statseeker/ui/*": ["libraries/ui/src/*"],
+         "@statseeker/utils": ["libraries/utils/src"],
+         "@statseeker/utils/*": ["libraries/utils/src/*"],
+         "@tooling/configuration": ["libraries/tooling/configuration/src"],
+         "~/api": ["packages/discovery/snmp-credentials/src/api"],
+         "~/api/*": ["packages/discovery/snmp-credentials/src/api/*"],
+         "~/components": ["packages/discovery/snmp-credentials/src/components"],
+         "~/components/*": ["packages/discovery/snmp-credentials/src/components/*"],
+         "~/config": ["packages/discovery/snmp-credentials/src/config"],
+         "~/config/*": ["packages/discovery/snmp-credentials/src/config/*"],
+         "~/contexts": ["packages/discovery/snmp-credentials/src/contexts"],
+         "~/contexts/*": ["packages/discovery/snmp-credentials/src/contexts/*"],
+         "~/features": ["packages/discovery/snmp-credentials/src/features"],
+         "~/features/*": ["packages/discovery/snmp-credentials/src/features/*"],
+         "~/hooks": ["packages/discovery/snmp-credentials/src/hooks"],
+         "~/hooks/*": ["packages/discovery/snmp-credentials/src/hooks/*"],
+         "~/lib": ["packages/discovery/snmp-credentials/src/lib"],
+         "~/lib/*": ["packages/discovery/snmp-credentials/src/lib/*"],
+         "~/providers": ["packages/discovery/snmp-credentials/src/providers"],
+         "~/providers/*": ["packages/discovery/snmp-credentials/src/providers/*"],
+         "~/reducers": ["packages/discovery/snmp-credentials/src/reducers"],
+         "~/reducers/*": ["packages/discovery/snmp-credentials/src/reducers/*"],
+         "~/routes": ["packages/discovery/snmp-credentials/src/routes"],
+         "~/routes/*": ["packages/discovery/snmp-credentials/src/routes/*"],
+         "~/test": ["packages/discovery/snmp-credentials/src/test"],
+         "~/test/*": ["packages/discovery/snmp-credentials/src/test/*"],
+         "~/types": ["packages/discovery/snmp-credentials/src/types"],
+         "~/types/*": ["packages/discovery/snmp-credentials/src/types/*"],
+         "~/utils": ["packages/discovery/snmp-credentials/src/utils"],
+         "~/utils/*": ["packages/discovery/snmp-credentials/src/utils/*"]
+      }
+   },
+   "files": [],
+   "include": ["src"],
+   "references": [
+      {
+         "path": "./tsconfig.app.json"
+      },
+      {
+         "path": "./tsconfig.spec.json"
+      }
+   ]
+}

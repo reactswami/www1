@@ -1,0 +1,69 @@
+import { type ApiObject } from '@statseeker/api/internal_api';
+import { HttpResponse, http, type PathParams } from 'msw';
+import { environment } from '../../../config';
+import { getSearchMock } from '../mocks';
+
+export const globalHandlers = [
+   http.post<PathParams, ApiObject & { command: 'get' } | {
+      command: 'describe';
+      object_type: string;
+      context?: string;
+   }, undefined, '/cgi/internal_api'>(
+      '/cgi/internal_api',
+      async ({ request }) => {
+         const requestBody = await request.json();
+
+         if (environment.proxy_requests) {
+            const proxiedResponse = await fetch(
+               `${environment.proxy_requests?.proxy_server}/cgi/internal_api`,
+               {
+                  method: 'POST',
+                  headers: {
+                     'Content-Type': 'application/json',
+                     'X-Proxy-Host': environment.proxy_requests?.host,
+                     'X-Proxy-User': environment.proxy_requests?.user,
+                     'X-Proxy-Password': environment.proxy_requests?.password,
+                  },
+                  body: JSON.stringify(requestBody),
+               }
+            );
+
+            const data = await proxiedResponse.json();
+            return HttpResponse.json(data, {
+               status: proxiedResponse.status,
+               statusText: proxiedResponse.statusText,
+            });
+         }
+
+         if (requestBody.object_type === 'globalsearch') {
+            if (requestBody.context === 'getGlobalSearch') {
+               return HttpResponse.json(getSearchMock(requestBody));
+            }
+         }
+      }
+   ),
+];
+
+/**
+ * Failed handlers
+ * Very useful for testing, since you can quickly replace existing handlers with fail calls to test your code
+ *
+ * `server.use(...failedHandlers);`
+ */
+export const failedHandlers = [
+   // http.post(routes.TEST_CONNECTION, () => {
+   //    return HttpResponse.json({ status: 400 });
+   // }),
+   // http.get(routes.GET_GLOBAL_CONFIG, () => {
+   //    return HttpResponse.json({ status: 400 });
+   // }),
+   // http.post(routes.UPDATE_GLOBAL_CONFIG, () => {
+   //    return HttpResponse.json({ status: 400 });
+   // }),
+   // http.post(routes.GET_ORGANISATIONS, () => {
+   //    return HttpResponse.json({ status: 400 });
+   // }),
+   // http.post(routes.GET_NETWORKS, () => {
+   //    return HttpResponse.json({ status: 400 });
+   // }),
+];

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" type="text/css" href="/css/theme.admin.css" />
+      <title>Edit SNMP Credentials</title>
+   </head>
+
+   <body>
+      <div align="center">
+         <form name="v3edit" id="form">
+            <input type="hidden" name="name" value="{{device_name}}" id="name" />
+            <input type="hidden" name="action" value="save" />
+            <div class="c_hdr">Edit SNMP Credentials</div>
+
+            <div id="error-container" class="error hidden"></div>
+
+            <table class="tnb">
+               <tr id="credential_row">
+                  <td><span style="font-weight: bold; color: #4c4c4c">SNMP Credential</span></td>
+                  <td>
+                     <select name="snmp_credential" id="snmp_credential">
+                        {{snmp_credential_options}}
+                     </select>
+                  </td>
+               </tr>
+               <tr id="maxoid_row" {{maxoid_display}}>
+                  <td><span style="font-weight: bold; color: #4c4c4c">SNMP MaxOID</span></td>
+                  <td>
+                     <select name="snmp_maxoid" id="snmp_maxoid">
+                        <option value="10" {{maxoid_10}}>10</option>
+                        <option value="20" {{maxoid_20}}>20</option>
+                        <option value="30" {{maxoid_30}}>30</option>
+                        <option value="40" {{maxoid_40}}>40</option>
+                        <option value="50" {{maxoid_50}}>50</option>
+                     </select>
+                  </td>
+               </tr>
+               <tr>
+                  <td align="center" colspan="2">
+                     <input type="submit" value="Save" />
+                  </td>
+               </tr>
+            </table>
+         </form>
+      </div>
+      <script type="module" src="/src/main.ts"></script>
+   </body>
+</html>

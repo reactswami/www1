@@ -1,0 +1,27 @@
+{
+   "name": "nim-edit-snmp-creds",
+   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+   "version": "0.0.1",
+   "projectType": "application",
+   "sourceRoot": "packages/nim/edit-snmp-creds/src",
+   "tags": [],
+   "targets": {
+      "build": {
+         "executor": "@nx/vite:build",
+         "options": {
+            "outputPath": "dist/packages/nim/edit-snmp-creds",
+            "deleteOutputPath": true,
+            "tsConfig": "packages/nim/edit-snmp-creds/tsconfig.app.json"
+         }
+      },
+      "lint": {
+         "executor": "nx:run-commands",
+         "outputs": ["{options.outputFile}"],
+         "options": {
+            "command": "eslint . --quiet",
+            "cwd": "packages/nim/edit-snmp-creds",
+            "lintFilePatterns": ["packages/nim/edit-snmp-creds/**/*.ts"]
+         }
+      }
+   }
+}

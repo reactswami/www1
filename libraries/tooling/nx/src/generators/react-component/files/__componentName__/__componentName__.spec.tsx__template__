@@ -1,0 +1,10 @@
+import { render, screen } from '@testing-library/react';
+import { <%= componentName %> } from './<%= componentName %>';
+
+describe('<<%=componentName %>', () => {
+   it('should render successfully', () => {
+      expect(() => render(< <%= componentName %> />)).not.toThrow();
+   });
+
+   it.todo('should have more tests');
+});

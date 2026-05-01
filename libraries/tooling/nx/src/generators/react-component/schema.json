@@ -1,0 +1,44 @@
+{
+   "$schema": "http://json-schema.org/schema",
+   "cli": "nx",
+   "$id": "ReactComponent",
+   "title": "Creates a React component",
+   "description": "Creates a React component",
+   "type": "object",
+   "properties": {
+      "name": {
+         "type": "string",
+         "description": "The name of the component",
+         "$default": {
+            "$source": "argv",
+            "index": 0
+         },
+         "x-prompt": "What name would you like to use?"
+      },
+      "project": {
+         "type": "string",
+         "description": "The project name",
+         "x-prompt": "What is the name of the package?"
+      },
+      "directory": {
+         "type": "string",
+         "description": "The directory name",
+         "x-prompt": "Where to create the component (for example, menu to create in src/menu/)?"
+      },
+      "skipTests": {
+         "type": "boolean",
+         "description": "The project name",
+         "default": false
+      },
+      "tags": {
+         "type": "string",
+         "description": "Add tags to the project (used for linting)",
+         "alias": "t"
+      }
+   },
+   "required": [
+      "name",
+      "project",
+      "directory"
+   ]
+}

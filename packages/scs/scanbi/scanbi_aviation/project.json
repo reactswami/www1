@@ -1,0 +1,27 @@
+{
+   "name": "scs-scanbi-aviation",
+   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+   "version": "0.0.1",
+   "projectType": "application",
+   "sourceRoot": "packages/scs/scanbi/scanbi_aviation/src",
+   "tags": ["scs"],
+   "targets": {
+      "build": {
+         "executor": "@nx/vite:build",
+         "options": {
+            "outputPath": "dist/packages/scs/scanbi_aviation",
+            "deleteOutputPath": true,
+            "tsConfig": "packages/scs/scanbi/scanbi_aviation/tsconfig.app.json"
+         }
+      },
+      "lint": {
+         "executor": "nx:run-commands",
+         "outputs": ["{options.outputFile}"],
+         "options": {
+            "command": "eslint . --quiet",
+            "cwd": "packages/scs/scanbi/scanbi_aviation",
+            "lintFilePatterns": ["packages/scs/scanbi/scanbi_aviation/**/*.{ts,tsx,js,jsx}"]
+         }
+      }
+   }
+}

@@ -1,0 +1,1 @@
+export { PingTablePaginationFooter } from './TablePaginationFooter';

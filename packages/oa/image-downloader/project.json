@@ -1,0 +1,26 @@
+{
+   "name": "oa-image-downloader",
+   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+   "projectType": "application",
+   "sourceRoot": "packages/oa/images-downloader/src",
+   "tags": ["oa"],
+   "targets": {
+      "build": {
+         "executor": "@nx/vite:build",
+         "options": {
+            "outputPath": "dist/packages/oa-image-downloader",
+            "deleteOutputPath": true,
+            "tsConfig": "packages/oa/image-downloader/tsconfig.app.json"
+         }
+      },
+      "lint": {
+         "executor": "nx:run-commands",
+         "outputs": ["{options.outputFile}"],
+         "options": {
+            "command": "eslint . --quiet",
+            "cwd": "packages/oa/image-downloader",
+            "lintFilePatterns": ["packages/oa/image-downloader/**/*.ts"]
+         }
+      }
+   }
+}

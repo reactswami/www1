@@ -1,0 +1,27 @@
+{
+   "name": "nim-alerting-libraries",
+   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+   "projectType": "application",
+   "sourceRoot": "packages/nim/alerting-libraries/src",
+   "targets": {
+      "build": {
+         "executor": "@nx/vite:build",
+         "options": {
+            "outputPath": "dist/packages/nim/alerting-libraries",
+            "deleteOutputPath": true,
+            "tsConfig": "packages/nim/alerting-libraries/tsconfig.app.json"
+         }
+      },
+      "lint": {
+         "executor": "nx:run-commands",
+         "outputs": ["{options.outputFile}"],
+         "options": {
+            "command": "eslint . --quiet",
+            "cwd": "packages/nim/alerting-libraries",
+            "lintFilePatterns": ["packages/nim/alerting-libraries/**/*.{ts,tsx,js,jsx}"]
+         }
+      }
+   },
+
+   "tags": []
+}

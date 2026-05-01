@@ -1,0 +1,1 @@
+export { ModalAssignServices } from './ModalAssignServices';

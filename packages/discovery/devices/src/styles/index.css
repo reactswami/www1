@@ -1,0 +1,9 @@
+body {
+   overflow: hidden;
+}
+
+.select-all-link {
+   color: var(--charka-colors-primary-500);
+   font-weight: var(--chakra-fontWeights-bold);
+   text-decoration: underline;
+}

@@ -1,0 +1,7 @@
+{
+   "name": "legacy-utils-tabs",
+   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+   "sourceRoot": "libraries/legacy/utils-tabs/index.js",
+   "projectType": "library",
+   "version": "0.0.1"
+}

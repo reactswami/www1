@@ -1,0 +1,28 @@
+{
+   "name": "tooling-nx",
+   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+   "sourceRoot": "libraries/tooling/nx/src",
+   "projectType": "library",
+   "version": "0.0.1",
+   "type": "commonjs",
+   "main": "src/index.js",
+   "generators": {},
+   "executors": "./executors.json",
+   "targets": {
+      "lint": {
+         "executor": "nx:run-commands",
+         "outputs": ["{options.outputFile}"],
+         "options": {
+            "command": "eslint . --quiet",
+            "cwd": "libraries/tooling/nx",
+            "lintFilePatterns": [
+               "libraries/tooling/nx/**/*.ts",
+               "libraries/tooling/nx/generators.json",
+               "libraries/tooling/nx/executors.json",
+               "libraries/tooling/nx/package.json"
+            ]
+         }
+      }
+   },
+   "tags": []
+}

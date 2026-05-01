@@ -1,0 +1,26 @@
+{
+   "name": "admin_tool-license_management",
+   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+   "projectType": "application",
+   "sourceRoot": "packages/admin_tool/license_management/src",
+   "targets": {
+      "build": {
+         "executor": "@nx/vite:build",
+         "options": {
+            "outputPath": "dist/packages/admin_tool-license_management",
+            "deleteOutputPath": true,
+            "tsConfig": "packages/admin_tool/license_management/tsconfig.app.json"
+         }
+      },
+      "lint": {
+         "executor": "nx:run-commands",
+         "outputs": ["{options.outputFile}"],
+         "options": {
+            "command": "eslint . --quiet",
+            "cwd": "packages/admin_tool/license_management/src",
+            "lintFilePatterns": ["packages/admin_tool/license_management/**/*.{ts,tsx,js,jsx}"]
+         }
+      }
+   },
+   "tags": []
+}

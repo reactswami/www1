@@ -1,0 +1,71 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`typography > should match the snapshot (typography haven't changed) 1`] = `
+{
+  "body": {
+    "color": "hsl(211, 28%, 23%)",
+    "fontFamily": "var(--font-family)",
+    "fontSize": "1rem",
+    "fontWeight": "500",
+    "letterSpacing": "calc(1rem * 0.015)",
+    "lineHeight": "160%",
+  },
+  "button": {
+    "fontFamily": "var(--font-family)",
+    "fontSize": ".95rem",
+    "fontWeight": "bold",
+    "letterSpacing": "calc(1rem * 0.025)",
+    "lineHeight": "160%",
+    "textTransform": "capitalize",
+  },
+  "h1": {
+    "color": "hsl(211, 77%, 14%)",
+    "fontFamily": "var(--font-family)",
+    "fontSize": "2.5rem",
+    "fontWeight": "bold",
+    "letterSpacing": "calc(-0.015 * 2.5rem)",
+    "lineHeight": "130%",
+  },
+  "h2": {
+    "color": "hsl(211, 79%, 22%)",
+    "fontFamily": "var(--font-family)",
+    "fontSize": "2rem",
+    "fontWeight": "500",
+    "letterSpacing": "calc(-0.005 * 2rem)",
+    "lineHeight": "130%",
+  },
+  "h3": {
+    "color": "hsl(211, 80%, 30%)",
+    "fontFamily": "var(--font-family)",
+    "fontSize": "1.75rem",
+    "fontWeight": "500",
+    "letterSpacing": "default",
+    "lineHeight": "130%",
+  },
+  "h4": {
+    "color": "hsl(211, 82%, 34%)",
+    "fontFamily": "var(--font-family)",
+    "fontSize": "1.5rem",
+    "fontWeight": "normal",
+    "letterSpacing": "calc(0.0025 * 1.5rem)",
+    "lineHeight": "130%",
+  },
+  "h5": {
+    "color": "hsl(211, 82%, 34%)",
+    "fontFamily": "var(--font-family)",
+    "fontSize": "1.2rem",
+    "fontWeight": "normal",
+    "letterSpacing": "calc(0.015 * 3rem)",
+    "lineHeight": "130%",
+  },
+  "label": {
+    "color": "hsl(211, 23%, 31%)",
+    "fontFamily": "var(--font-family)",
+    "fontSize": ".75rem",
+    "fontWeight": "bold",
+    "letterSpacing": "calc(0.75rem * 0.05)",
+    "lineHeight": "130%",
+    "textTransform": "uppercase",
+  },
+}
+`;

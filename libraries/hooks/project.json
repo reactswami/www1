@@ -1,0 +1,18 @@
+{
+   "name": "libraries-hooks",
+   "$schema": "../../node_modules/nx/schemas/project-schema.json",
+   "sourceRoot": "libraries/hooks/src",
+   "projectType": "library",
+   "targets": {
+      "lint": {
+         "executor": "nx:run-commands",
+         "outputs": ["{options.outputFile}"],
+         "options": {
+            "command": "eslint . --quiet",
+            "cwd": "libraries/hooks",
+            "lintFilePatterns": ["libraries/hooks/**/*.ts"]
+         }
+      }
+   },
+   "tags": []
+}

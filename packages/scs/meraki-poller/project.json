@@ -1,0 +1,26 @@
+{
+   "name": "scs-meraki-poller",
+   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+   "sourceRoot": "packages/scs/meraki-poller/src",
+   "projectType": "application",
+   "tags": ["scs"],
+   "targets": {
+      "build": {
+         "executor": "@nx/vite:build",
+         "options": {
+            "outputPath": "dist/packages/scs/meraki-poller",
+            "deleteOutputPath": true,
+            "tsConfig": "packages/scs/meraki-poller/tsconfig.app.json"
+         }
+      },
+      "lint": {
+         "executor": "nx:run-commands",
+         "outputs": ["{options.outputFile}"],
+         "options": {
+            "command": "eslint . --quiet",
+            "cwd": "packages/scs/meraki-poller",
+            "lintFilePatterns": ["packages/scs/meraki-poller/**/*.{ts,tsx,js,jsx}"]
+         }
+      }
+   }
+}

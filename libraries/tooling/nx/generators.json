@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "tooling-nx",
+  "version": "0.0.1",
+  "generators": {
+    "react-app": {
+      "factory": "./src/generators/react-app/generator",
+      "schema": "./src/generators/react-app/schema.json",
+      "description": "Scaffold a react application (package)"
+   },
+   "react-component": {
+      "factory": "./src/generators/react-component/generator",
+      "schema": "./src/generators/react-component/schema.json",
+      "description": "Scaffold a React component"
+    }
+  }
+}

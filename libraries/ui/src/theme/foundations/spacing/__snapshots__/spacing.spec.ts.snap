@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`spacing > should match the snapshot (spacing haven't changed) 1`] = `
+{
+  "base": "calc(1 * 1em)",
+  "lg": "calc(2 * 1em)",
+  "md": "calc(1.25 * 1em)",
+  "none": 0,
+  "px": "1px",
+  "sm": "calc(0.75 * 1em)",
+  "xl": "calc(3.25 * 1em)",
+  "xs": "calc(0.5 * 1em)",
+  "xxl": "calc(5.25 * 1em)",
+  "xxs": "calc(0.25 * 1em)",
+}
+`;

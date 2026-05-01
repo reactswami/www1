@@ -1,0 +1,26 @@
+{
+   "name": "discovery-snmp-credentials",
+   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+   "projectType": "application",
+   "sourceRoot": "packages/discovery/snmp-credentials/src",
+   "tags": [],
+   "targets": {
+      "build": {
+         "executor": "@nx/vite:build",
+         "options": {
+            "outputPath": "dist/packages/discovery-snmp-credentials",
+            "deleteOutputPath": true,
+            "tsConfig": "packages/discovery/snmp-credentials/tsconfig.app.json"
+         }
+      },
+      "lint": {
+         "executor": "nx:run-commands",
+         "outputs": ["{options.outputFile}"],
+         "options": {
+            "command": "eslint . --quiet",
+            "cwd": "packages/discovery/snmp-credentials/src",
+            "lintFilePatterns": ["packages/discovery/snmp-credentials/**/*.{ts,tsx,js,jsx}"]
+         }
+      }
+   }
+}
