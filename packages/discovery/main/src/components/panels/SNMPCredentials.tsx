@@ -4,7 +4,7 @@ import {
    Input,
    Text,
    useDisclosure,
-} from '@chakra-ui/react';
+} from '@statseeker/components/Layout';
 import { type SNMPCredential } from '@statseeker/api/internal_api/entities/snmp_credential';
 import { Panel } from '@statseeker/components/Disclosure/Panel';
 import { SSDataTable, type ColumnDef } from '@statseeker/components/Legacy/SSDataTable';

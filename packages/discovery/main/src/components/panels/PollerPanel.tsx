@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Text } from '@statseeker/components/Layout';
 import { type PollerListItem } from '@statseeker/api/internal_api/entities';
 import { Flex } from '@statseeker/components';
 import EntityTypeAhead from '@statseeker/components/Legacy/EntityTypeAhead/EntityTypeAhead';

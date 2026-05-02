@@ -1,4 +1,4 @@
-import { Box, Flex, FormControl, Select, Button } from '@chakra-ui/react';
+import { Box, Flex, FormControl, Select, Button } from '@statseeker/components/Layout';
 import { ChevronLeftIcon } from '@radix-ui/react-icons';
 import { useEnumFields } from '@statseeker/api/internal_api';
 import { type DiscoverExecuteOptions, executeDiscover } from '@statseeker/api/internal_api/entities';
@@ -254,7 +254,6 @@ function DiscoverHistoryComponent() {
          label: getModeDisplayName(option.label),
          value: option?.label,
       })), [dropdownFields]);
-   // Define filter groups configuration
    const filterGroups = useMemo<FilterGroup[]>(() => [
       {
          id: 'task_type',
@@ -419,7 +418,7 @@ function DiscoverHistoryComponent() {
                alignItems="flex-end"
                width="100%"
                gap={2}
-               minW={600} // Collapsing filters looks weird. This will scroll card instead
+               minW={600}
             >
                <Flex className="filters" gap={2}>
                   <Box mt={'3px'}>

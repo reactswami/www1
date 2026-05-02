@@ -1,4 +1,4 @@
-import { Text } from '@chakra-ui/react';
+import { Text } from '@statseeker/components/Layout';
 import { useQuery } from '@tanstack/react-query';
 import { discoverHostsQueryOptions } from '~/lib';
 

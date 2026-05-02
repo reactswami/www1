@@ -1,4 +1,4 @@
-import { Flex, Spinner, Text } from '@chakra-ui/react';
+import { Flex, Spinner, Text } from '@statseeker/components/Layout';
 import { AdminLayout, AdminPage } from '@statseeker/components';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';

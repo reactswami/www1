@@ -1,9 +1,9 @@
-import { Button } from '@chakra-ui/react';
+import { Button } from '@statseeker/components/Layout';
 import DropdownButton, { DropDownType } from '@statseeker/components/Legacy/DropdownButton/DropdownButton';
 import { useSuspenseQuery } from '@tanstack/react-query';
 import { useSearch, Link } from '@tanstack/react-router';
 import React from 'react';
-import { type DiscoveryPanelContainerProps } from "./DiscoveryPanelContainer";
+import { type DiscoveryPanelContainerProps } from './DiscoveryPanelContainer';
 import { discoverQueryOptions } from '~/lib';
 
 type DiscoveryPanelFooterProps = Pick<DiscoveryPanelContainerProps, 'showAdvancedOptionsButton' | 'startButtonText'

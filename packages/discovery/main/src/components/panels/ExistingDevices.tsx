@@ -1,4 +1,4 @@
-import { Flex, FormLabel, Select, Switch, Text } from '@chakra-ui/react';
+import { Flex, FormLabel, Select, Switch, Text } from '@statseeker/components/Layout';
 import { Panel } from '@statseeker/components/Disclosure/Panel';
 import { getProductName } from '@statseeker/utils/environment';
 import { type ChangeEvent, useRef } from 'react';

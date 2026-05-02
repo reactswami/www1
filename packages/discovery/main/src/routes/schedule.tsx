@@ -1,4 +1,4 @@
-import { Flex, Button, Box, } from '@chakra-ui/react';
+import { Flex, Button, Box } from '@statseeker/components/Layout';
 import { ChevronLeftIcon } from '@radix-ui/react-icons';
 import { type DiscoverExecuteOptions, type PollerListItem, type Task } from '@statseeker/api/internal_api/entities';
 import { AdminLayout, AdminPage, ErrorBoundary } from '@statseeker/components';
@@ -63,7 +63,6 @@ export const Route = createFileRoute('/schedule')({
       poller_status,
       poller_name
    }),
-   //loader: (opts) => opts.context.queryClient.ensureQueryData(getDiscoverTaskQuery(opts.deps)),
    staleTime: 0,
    component: withErrorBoundary(DiscoverScheduleComponent),
 });
@@ -151,7 +150,6 @@ function DiscoverScheduleComponent() {
    const selectedTask = useMemo(
       () => discoverSchedules?.data?.filter(task => task.id === search?.selectedIds?.[0])?.[0],
       [discoverSchedules?.data, search?.selectedIds]);
-
 
    const toast = useToast();
    const { disableScheduleMutation } = useDisableSchedule({ enabled: 1 });
@@ -294,7 +292,6 @@ function DiscoverScheduleComponent() {
       },
    ];
 
-   // Define filter groups configuration
    const filterGroups: FilterGroup<Task>[] = [
       {
          id: 'enabled',

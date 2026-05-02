@@ -5,7 +5,8 @@ import {
     ModalContent,
     ModalHeader,
     ModalOverlay,
-} from '@chakra-ui/react';
+} from '@statseeker/components/Layout';
+import { type UseDisclosureReturn } from '@chakra-ui/react';
 import { type SNMPCredential } from '@statseeker/api/internal_api/entities/snmp_credential';
 import { CredentialsForm } from '@statseeker/components/Legacy/CredentialsForm';
 import { useToast } from '@statseeker/hooks';

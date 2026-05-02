@@ -2,9 +2,7 @@ import {
    Box,
    Flex,
    FormControl,
-   Text,
-   useDisclosure,
-} from '@chakra-ui/react';
+} from '@statseeker/components/Layout';
 import { type PollerListItem } from '@statseeker/api/internal_api/entities';
 import { type ManualConfig } from '@statseeker/api/internal_api/entities/discover/type';
 import { Button } from '@statseeker/components';
@@ -53,7 +51,6 @@ function ManualDeviceAdd({
    } = useManualDeviceManagement();
 
    useEffect(() => {
-      // Remove index before sending to parent
       const cleanConfigs = manualConfigs.map(({ index, ...rest }) => rest);
       onChange(cleanConfigs, isManualMode);
    }, [isManualMode, manualConfigs]);
@@ -70,9 +67,6 @@ function ManualDeviceAdd({
       [handleDeviceChange, setDirty, setEntityErrors, setShouldValidate]
    );
 
-   /**
-    * Handle mode change (Manual vs Import)
-    */
    const handleModeChange = useCallback(
       (isManual: boolean) => {
          if (isManual) {
@@ -84,9 +78,6 @@ function ManualDeviceAdd({
       [resetToManualMode, onOpen]
    );
 
-   /**
-    * Handle import modal completion
-    */
    const handleImportComplete = useCallback(
       (configs: ManualConfig[]) => {
          setEntityErrors([]);

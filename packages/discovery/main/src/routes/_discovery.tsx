@@ -1,4 +1,4 @@
-import { Button, Flex } from '@chakra-ui/react';
+import { Button, Flex } from '@statseeker/components/Layout';
 import { ChevronLeftIcon } from '@radix-ui/react-icons';
 import { AdminLayout } from '@statseeker/components';
 import { Outlet, createFileRoute, useLocation, useRouter } from '@tanstack/react-router';

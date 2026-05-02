@@ -10,10 +10,10 @@ import {
    ListItem,
    ModalFooter,
    Button,
-   Text,
    FormErrorMessage,
    FormControl,
-} from '@chakra-ui/react';
+} from '@statseeker/components/Layout';
+import { Text } from '@statseeker/components/Typography/Text';
 import { DownloadIcon, EyeClosedIcon, EyeOpenIcon } from '@radix-ui/react-icons';
 import { type ManualConfig } from '@statseeker/api/internal_api/entities';
 import FileUpload from '@statseeker/components/Legacy/IPRanges/FileUpload/FileUpload';

@@ -1,4 +1,5 @@
-import { Box, Flex, Input, Text } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@statseeker/components/Layout';
+import { Input } from '@statseeker/components/Layout/Form';
 import {
    type PollerListItem,
    type Device,
@@ -63,10 +64,6 @@ function SpecificDevices({ onPollerChange, poller, onChange, devices, isEdit }: 
    const { data, isSuccess } = useQuery(devicesQueryOptions.get({ ...filters, text_filter }));
    const [selectedIds, setSelectedIds] = useState<number[] | undefined | 'all'>([]);
 
-   // If the selection is from a long list of devices it will be inconvenient
-   // while editing the devices as this will call for moving up and down
-   // to see the selected devices, this will enable the visual of the selected
-   // devices always on the top of the list.
    const sortSelectedData = useMemo(() => {
       if (!data) return [];
       if (!selectedIds || selectedIds === 'all') return data;
@@ -123,7 +120,6 @@ function SpecificDevices({ onPollerChange, poller, onChange, devices, isEdit }: 
             return { devices: [], groups: [] };
          }
 
-         // If text filter is active, return filtered devices
          if (text_filter) {
             return {
                devices: selectedDevices.map((device) => device.name),
@@ -131,18 +127,15 @@ function SpecificDevices({ onPollerChange, poller, onChange, devices, isEdit }: 
             };
          }
 
-         // If a single group is filtered and all devices in that group are selected
          if (filters.group_id_filter && filters.group_name) {
             const allDevicesSelected = data && selectedDevices.length === data.length;
 
             if (allDevicesSelected) {
-               // All devices from group selected -> return group
                return {
                   devices: [],
                   groups: [filters.group_name],
                };
             } else {
-               // Partial selection -> return individual devices
                return {
                   devices: selectedDevices.map((device) => device.name),
                   groups: [],
@@ -150,7 +143,6 @@ function SpecificDevices({ onPollerChange, poller, onChange, devices, isEdit }: 
             }
          }
 
-         // Default case: return selected device names
          return {
             devices: selectedDevices.map((device) => device.name),
             groups: [],
@@ -161,7 +153,6 @@ function SpecificDevices({ onPollerChange, poller, onChange, devices, isEdit }: 
 
    const handleDeviceSelectionChange = useCallback(
       (selectedDevices: Device[] | undefined, source: SelectionEventSourceType) => {
-         // Ignore programmatic changes
          if (source !== 'rowDataChanged') {
 
             const ids = selectedDevices?.map((device) => device.id);
@@ -176,7 +167,6 @@ function SpecificDevices({ onPollerChange, poller, onChange, devices, isEdit }: 
 
    const handleGroupSelectionChange = useCallback(
       (e: Group | null) => {
-         // Update filters based on selection
          if (e) {
             setFilters((prev) => ({
                ...prev,

@@ -1,4 +1,4 @@
-import { Alert, AlertDescription, AlertTitle, Spinner } from '@chakra-ui/react';
+import { Alert, AlertDescription, AlertTitle, Spinner } from '@statseeker/components/Layout';
 import {
    executeDiscover,
    type DiscoverExecuteOptions,
@@ -26,7 +26,7 @@ import { discoverQueryOptions } from '~/lib/ReactQuery';
 import '../styles.css';
 import { getModeDisplayName } from '~/utils';
 
-export const Route = createFileRoute('/')({
+export const Route = createFileRoute('/')( {
    loader: (opts) =>
       opts.context.queryClient.ensureQueryData(
          discoverQueryOptions.currentDiscoverQueryOptions({ refetchInterval: 15000 })
@@ -177,12 +177,10 @@ function IndexRoute() {
    const title = `Discover My Network`;
    const discoveryTitle = deviceName ? `${title} - ${deviceName}` : title;
 
-   // Helper to create spinner header
    const createSpinnerHeader = () => (
       <Spinner margin={'auto'} display={'block'} color="primary.500" size={'lg'} />
    );
 
-   // Build Network Discovery Card
    const networkDiscoveryCard = useMemo(() => {
       const builder = new NavCardBuilder()
          .text('Network Discovery')
@@ -214,7 +212,6 @@ function IndexRoute() {
          .build();
    }, [showNetworkDiscovery, isNetworkDiscoverRunning, buildProgressCard, discoveryInProgress, addDiscloseNetwork, runNowMutation, search]);
 
-   // Build Rewalk Card
    const rewalkCard = useMemo(() => {
       const builder = new NavCardBuilder()
          .text('Rewalk')
@@ -248,7 +245,6 @@ function IndexRoute() {
          .build();
    }, [isRewalkRunning, discoveryInProgress, buildProgressCard, addDiscloseRewalk, getExecuteRewalk, showRewalk, search]);
 
-   // Build Manual Device Addition Card
    const manualDeviceCard = useMemo(() => {
       const builder = new NavCardBuilder()
          .text('Manual Device Addition')
@@ -270,7 +266,6 @@ function IndexRoute() {
          .build();
    }, [iManualRunning, discoveryInProgress, buildProgressCard, showManualDevice, search]);
 
-   // Build Ping-only Discovery Card
    const pingOnlyCard = useMemo(() => {
       const builder = new NavCardBuilder()
          .text('Ping-only Discovery')
@@ -292,7 +287,6 @@ function IndexRoute() {
          .build();
    }, [isPingOnlyRunning, discoveryInProgress, buildProgressCard, showPingOnlyDiscovery, search]);
 
-   // Build View Recent Discoveries Card
    const historyCard = useMemo(() => {
       return new NavCardBuilder()
          .text('View Recent Discoveries')
@@ -305,7 +299,6 @@ function IndexRoute() {
          .build();
    }, [showHistory]);
 
-   // Build View Schedules Card
    const scheduleCard = useMemo(() => {
       return new NavCardBuilder()
          .text('View Saved Configurations')

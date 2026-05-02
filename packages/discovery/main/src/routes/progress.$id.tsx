@@ -9,7 +9,7 @@ import {
    AlertTitle,
    AlertDescription,
    Spinner,
-} from '@chakra-ui/react';
+} from '@statseeker/components/Layout';
 import { ChevronLeftIcon } from '@radix-ui/react-icons';
 import {
    AdminLayout,
@@ -71,7 +71,6 @@ export default function ProgressIdRoute() {
    const status = discoverData?.status;
    const api_task = discoverData?.task_name;
 
-   // if the mode is hosts and there are no snmp credentials it is actually a ping only discovery
    const isPingDiscover =
       mode === 'Ping Only Discover' || (mode === 'Hosts' && discoverData.credential_length === 0);
 

@@ -1,4 +1,5 @@
-import { Accordion, Flex, type FlexProps } from '@chakra-ui/react';
+import { type FlexProps } from '@chakra-ui/react';
+import { Accordion, Flex } from '@statseeker/components/Layout';
 import { useState, type ReactNode } from 'react';
 import DiscoveryPanelFooter from './DiscoveryPanelFooter';
 import { InfoCard } from '~/components';
@@ -95,4 +96,3 @@ export function DiscoveryPanelContainer({
       </Flex>
    );
 }
-

@@ -1,4 +1,5 @@
-import { Button, Card, Flex, Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spinner, Text, type UseDisclosureReturn, useDisclosure, Box } from '@chakra-ui/react';
+import { Button, Card, Flex, Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spinner, Text, useDisclosure, Box } from '@statseeker/components/Layout';
+import { type UseDisclosureReturn } from '@chakra-ui/react';
 import  { type DiscoverHistoryDetails } from '@statseeker/api/internal_api/entities';
 import { CheckIcon, Cross1Icon, QuestionMarkCircledIcon } from '@statseeker/ui/icons';
 
@@ -106,4 +107,3 @@ export type SummaryCardWrapperProps = {
    discoverInProgress: boolean;
    mode?: string;
 };
-

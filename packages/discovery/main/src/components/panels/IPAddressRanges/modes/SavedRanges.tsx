@@ -10,7 +10,7 @@ import {
    ModalHeader,
    ModalOverlay,
    useDisclosure,
-} from '@chakra-ui/react';
+} from '@statseeker/components/Layout';
 import {
    type IpRangeConfigFilters,
    type IpRangeConfig,

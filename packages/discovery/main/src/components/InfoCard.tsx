@@ -1,4 +1,4 @@
-import { Alert, AlertDescription, AlertIcon } from '@chakra-ui/react';
+import { Alert, AlertDescription, AlertIcon } from '@statseeker/components/Layout';
 
 /** This will be the alert used on each of the discovery pages giving a brief explanation of each discovery mode */
 export function InfoCard({ text }: { text: string }) {

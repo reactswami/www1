@@ -1,5 +1,4 @@
-
-import { Flex, FormControl, Select, Text } from '@chakra-ui/react';
+import { Flex, FormControl, Select, Text } from '@statseeker/components/Layout';
 import {
    type IpRangeConfig,
    type DiscoverExecuteOptions,
