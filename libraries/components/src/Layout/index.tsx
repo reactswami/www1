@@ -4,5 +4,8 @@
  */
 export * from './AdminLayout';
 export * from './AdminPage';
+export * from './Box';
+export * from './Divider';
 export * from './Flex';
+export * from './Grid';
 export * from './Spacer';
