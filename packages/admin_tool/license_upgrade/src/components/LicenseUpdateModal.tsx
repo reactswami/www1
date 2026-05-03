@@ -1,12 +1,4 @@
-import {
-   Modal,
-   ModalBody,
-   ModalCloseButton,
-   ModalContent,
-   ModalFooter,
-   ModalHeader,
-   ModalOverlay,
-} from '@chakra-ui/react';
+import { SSModal } from '@statseeker/components/Layout/Modal';
 import { Button } from '@statseeker/components/Form/Button';
 import { Flex } from '@statseeker/components/Layout/Flex';
 import { Input } from '@statseeker/components/Legacy/Input/Input';
@@ -48,57 +40,57 @@ export const LicenseUpdateModal = (props: LicenseUpdateModalProps) => {
    };
 
    return (
-      <Modal isOpen onClose={props.onClose} size={'md'}>
-         <ModalOverlay />
-         <ModalContent>
-            <ModalHeader>Apply New License</ModalHeader>
-            <ModalCloseButton />
-            <form onSubmit={handleSubmit(submitForm)}>
-               <ModalBody>
-                  <Flex flexDir={'column'} gap={2}>
-                     <Text>
-                        Enter your Server ID, then click{' '}
-                        {props.mode === 'download' ? (
-                           <>
-                              <Text as="b">Download</Text> to retrieve
-                           </>
-                        ) : (
-                           <>
-                              <Text as="b">Upload</Text> to select
-                           </>
-                        )}{' '}
-                        your Statseeker license.
-                     </Text>
-                     <Input
-                        type="text"
-                        {...register('server_id', {
-                           required: `Server ID is required.`,
-                        })}
-                        label="Server ID"
-                        error={formState.errors['server_id']?.message}
-                        isRequired={true}
-                     />
-                  </Flex>
-               </ModalBody>
-               <ModalFooter>
-                  <Flex justifyContent={'flex-end'} gap={2}>
-                     <Button variant="primary" onClick={props.onClose} isDisabled={props.isLoading}>
-                        Cancel
-                     </Button>
-                     <Button variant="secondary" type="submit" isLoading={props.isLoading}>
-                        {props.mode === 'download' ? 'Download' : 'Upload'}
-                     </Button>
-                  </Flex>
-               </ModalFooter>
-            </form>
-            <input
-               ref={fileUploadRef}
-               type="file"
-               accept=".lic"
-               style={{ display: 'none' }}
-               onChange={uploadFile}
-            />
-         </ModalContent>
-      </Modal>
+      <>
+         <SSModal
+            isOpen
+            onClose={props.onClose}
+            size="md"
+            title="Apply New License"
+            form={{ id: 'LicenseUpgradeForm', onSubmit: handleSubmit(submitForm) }}
+            confirmButton={{
+               label: props.mode === 'download' ? 'Download' : 'Upload',
+               variant: 'secondary',
+               formId: 'LicenseUpgradeForm',
+               isLoading: props.isLoading,
+            }}
+            cancelButton={{
+               label: 'Cancel',
+               onClick: props.onClose,
+               isDisabled: props.isLoading,
+            }}
+         >
+            <Flex flexDir={'column'} gap={2}>
+               <Text>
+                  Enter your Server ID, then click{' '}
+                  {props.mode === 'download' ? (
+                     <>
+                        <Text as="b">Download</Text> to retrieve
+                     </>
+                  ) : (
+                     <>
+                        <Text as="b">Upload</Text> to select
+                     </>
+                  )}{' '}
+                  your Statseeker license.
+               </Text>
+               <Input
+                  type="text"
+                  {...register('server_id', {
+                     required: `Server ID is required.`,
+                  })}
+                  label="Server ID"
+                  error={formState.errors['server_id']?.message}
+                  isRequired={true}
+               />
+            </Flex>
+         </SSModal>
+         <input
+            ref={fileUploadRef}
+            type="file"
+            accept=".lic"
+            style={{ display: 'none' }}
+            onChange={uploadFile}
+         />
+      </>
    );
 };

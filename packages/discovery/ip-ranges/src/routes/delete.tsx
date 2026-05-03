@@ -1,14 +1,6 @@
-import {
-   Button,
-   Modal,
-   ModalBody,
-   ModalCloseButton,
-   ModalContent,
-   ModalFooter,
-   ModalHeader,
-   ModalOverlay,
-   Text
-} from '@chakra-ui/react';
+import { SSModal } from '@statseeker/components/Layout/Modal';
+import { Text } from '@chakra-ui/react';
+import { Button } from '@statseeker/components/Form/Button';
 import { createFileRoute, useRouter } from '@tanstack/react-router';
 import { useForm } from 'react-hook-form';
 import * as z from 'zod';
@@ -26,9 +18,7 @@ export const Route = createFileRoute('/delete')({
    component: DeleteRangesRoute,
 });
 
-type DeleteRangesFormData = {
-   value: string | number;
-};
+type DeleteRangesFormData = { value: string | number };
 
 function DeleteRangesRoute() {
    const { id } = Route.useSearch();
@@ -39,48 +29,15 @@ function DeleteRangesRoute() {
    const route = useRouter();
 
    return (
-      <Modal isOpen={true} onClose={() => route.history.back()}>
-         <ModalOverlay />
-         <ModalContent>
-            <ModalHeader>Delete IP Address Ranges</ModalHeader>
-            <ModalCloseButton />
-            <form
-               id="DeleteRangesForm"
-               onSubmit={handleSubmit(() => deleteRanges.mutate({ids}))}
-            >
-               <ConfirmDeleteRanges isLoading={isLoading} />
-            </form>
-         </ModalContent>
-      </Modal>
-   );
-}
-
-function ConfirmDeleteRanges({ isLoading }: { isLoading: boolean }) {
-   const route = useRouter();
-   return (
-      <>
-         <ModalBody>
-            <Text>Are you sure you want to delete these IP Address Ranges?</Text>
-         </ModalBody>
-         <ModalFooter>
-            <Button
-               className="CancelDeleteRange"
-               type="button"
-               mr={3}
-               onClick={() => route.history.back()}
-            >
-               Cancel
-            </Button>
-            <Button
-               className="ConfirmDeleteRange"
-               type="submit"
-               variant="solid"
-               colorScheme={'red'}
-               isLoading={isLoading}
-            >
-               Delete
-            </Button>
-         </ModalFooter>
-      </>
+      <SSModal
+         isOpen={true}
+         onClose={() => route.history.back()}
+         title="Delete IP Address Ranges"
+         form={{ id: 'DeleteRangesForm', onSubmit: handleSubmit(() => deleteRanges.mutate({ ids })) }}
+         confirmButton={{ label: 'Delete', variant: 'danger', formId: 'DeleteRangesForm', isLoading, className: 'ConfirmDeleteRange' }}
+         cancelButton={{ label: 'Cancel', onClick: () => route.history.back(), className: 'CancelDeleteRange' }}
+      >
+         <Text>Are you sure you want to delete these IP Address Ranges?</Text>
+      </SSModal>
    );
 }
