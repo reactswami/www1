@@ -5,6 +5,7 @@
 export * from './Accordion';
 export * from './AdminLayout';
 export * from './AdminPage';
+export * from './AlertDialog';
 export * from './Box';
 export * from './Card';
 export * from './Divider';
