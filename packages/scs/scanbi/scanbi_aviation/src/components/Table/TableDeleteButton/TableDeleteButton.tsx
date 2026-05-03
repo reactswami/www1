@@ -1,15 +1,11 @@
 import {
-   Alert,
-   AlertDescription,
-   AlertIcon,
-   AlertTitle,
    Flex,
    IconButton,
    Text,
    Tooltip,
    type UseDisclosureReturn,
 } from '@chakra-ui/react';
-import { SSAlertDialog } from '@statseeker/components/Layout/AlertDialog';
+import { SSAlertDialog, SSAlertDialogAlert } from '@statseeker/components/Layout/AlertDialog';
 import { TrashIcon } from '@statseeker/ui/icons';
 
 export interface DeleteButtonProps {
@@ -52,21 +48,11 @@ export const TableDeleteButton = ({
                alignItems: 'flex-start',
             }}
          >
-            <Alert
+            <SSAlertDialogAlert
                status="info"
-               display={'flex'}
-               flexDirection={'column'}
-               alignItems="flex-start"
-               gap="sm"
-               borderRadius={'sm'}
-            >
-               <Flex gap="sm">
-                  <AlertIcon />
-                  <AlertTitle>Note</AlertTitle>
-               </Flex>
-               <AlertDescription>{warningMessage}</AlertDescription>
-            </Alert>
-
+               title="Note"
+               descriptions={[warningMessage]}
+            />
             <Text paddingY={2}>Do you wish to delete? This action can't be undone.</Text>
          </SSAlertDialog>
 

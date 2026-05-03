@@ -1,15 +1,11 @@
 import {
-   Alert,
-   AlertDescription,
-   AlertIcon,
-   AlertTitle,
    Link,
    MenuItem,
    useDisclosure,
 } from '@chakra-ui/react';
 import { Button, Flex, Text } from '@statseeker/components';
-import { SSAlertDialog } from '@statseeker/components/Layout/AlertDialog';
-import { useEffect, useRef } from 'react';
+import { SSAlertDialog, SSAlertDialogAlert } from '@statseeker/components/Layout/AlertDialog';
+import { useEffect } from 'react';
 import { useDeleteOa, useFetchOrphanDevicesCount } from '~/hooks';
 
 interface Props {
@@ -64,56 +60,37 @@ export const DeleteOaMenuItem = ({ id, name }: Props) => {
             {isLoadingOrphanCount && (
                <Text>Verifying the devices polled by {name}, please wait.</Text>
             )}
+
             {!isLoadingOrphanCount && count! > 0 && (
-               <Alert
+               <SSAlertDialogAlert
                   status="error"
-                  display={'flex'}
-                  flexDirection={'column'}
-                  alignItems="flex-start"
-                  gap="sm"
-                  borderRadius={'sm'}
-               >
-                  <Flex gap="sm">
-                     <AlertIcon />
-                     <AlertTitle>Warning</AlertTitle>
-                  </Flex>
-                  <AlertDescription>
-                     There {count > 1 ? 'are' : 'is'} {count} device
-                     {count > 1 && 's'} that are only polled from {name}. Proceeding with this
-                     action will permanently remove {count > 1 ? 'them' : 'it'} from Statseeker.
-                  </AlertDescription>
-                  <AlertDescription>
-                     If you want to continue monitoring these devices, please assign them to
-                     another poller first.
-                  </AlertDescription>
-                  <Link href={`${window.location.origin}/cgi/oa_ping_manager`}>
-                     <Button alignSelf={'flex-end'} colorScheme="red" variant="secondary">
-                        Re-assign pollers
-                     </Button>
-                  </Link>
-               </Alert>
+                  title="Warning"
+                  descriptions={[
+                     `There ${count > 1 ? 'are' : 'is'} ${count} device${
+                        count > 1 ? 's' : ''
+                     } that are only polled from ${name}. Proceeding with this action will permanently remove ${
+                        count > 1 ? 'them' : 'it'
+                     } from Statseeker.`,
+                     'If you want to continue monitoring these devices, please assign them to another poller first.',
+                  ]}
+                  footer={
+                     <Link href={`${window.location.origin}/cgi/oa_ping_manager`}>
+                        <Button alignSelf={'flex-end'} colorScheme="red" variant="secondary">
+                           Re-assign pollers
+                        </Button>
+                     </Link>
+                  }
+               />
             )}
 
-            <Alert
+            <SSAlertDialogAlert
                status="info"
-               display={'flex'}
-               flexDirection={'column'}
-               alignItems="flex-start"
-               gap="sm"
-               borderRadius={'sm'}
-            >
-               <Flex gap="sm">
-                  <AlertIcon />
-                  <AlertTitle>Note</AlertTitle>
-               </Flex>
-               <AlertDescription>
-                  This will delete all ping data collected from {name}.
-               </AlertDescription>
-               <AlertDescription>
-                  Deleting an Observability Appliance will only remove the configuration from
-                  Statseeker and will not remove the deployed Observability Appliance.
-               </AlertDescription>
-            </Alert>
+               title="Note"
+               descriptions={[
+                  `This will delete all ping data collected from ${name}.`,
+                  'Deleting an Observability Appliance will only remove the configuration from Statseeker and will not remove the deployed Observability Appliance.',
+               ]}
+            />
 
             <Text paddingY={2}>
                Are you sure you wish to delete {name}? This action can't be undone.

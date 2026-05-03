@@ -1,4 +1,8 @@
 import {
+   Alert,
+   AlertDescription,
+   AlertIcon,
+   AlertTitle,
    AlertDialog as ChakraAlertDialog,
    AlertDialogBody,
    AlertDialogCloseButton,
@@ -9,82 +13,145 @@ import {
    type AlertDialogProps,
    type AlertDialogBodyProps,
    type AlertDialogContentProps,
+   type AlertProps,
    type UseDisclosureReturn,
    useDisclosure,
 } from '@chakra-ui/react';
 import { Button } from '@statseeker/components/Form/Button';
+import { Flex } from '@statseeker/components/Layout/Flex';
 import { type ReactNode, useRef } from 'react';
 import { type ModalButtonConfig } from '../Modal/SSModal';
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Props
+// SSAlertDialogAlert
+// ─────────────────────────────────────────────────────────────────────────────
+
+export type SSAlertDialogAlertProps = {
+   /**
+    * Chakra Alert status — controls the colour scheme and default icon.
+    * @default 'info'
+    */
+   status?: AlertProps['status'];
+   /**
+    * Bold title shown next to the icon.
+    * If omitted, only the icon and descriptions are rendered.
+    */
+   title?: string;
+   /**
+    * One or more description strings rendered as separate `<AlertDescription>`
+    * elements below the title row.
+    */
+   descriptions: ReactNode[];
+   /**
+    * Optional content rendered after the descriptions — e.g. a Link, Button,
+    * or any JSX that should appear at the bottom of the alert panel.
+    */
+   footer?: ReactNode;
+   /** Any extra Chakra `Alert` props (e.g. custom borderRadius, marginTop). */
+   alertProps?: Omit<AlertProps, 'status'>;
+};
+
+/**
+ * **SSAlertDialogAlert** — the standardised alert panel used inside
+ * `SSAlertDialog` body content.
+ *
+ * Wraps the repetitive
+ * ```tsx
+ * <Alert status="..." display="flex" flexDirection="column" ...>
+ *   <Flex gap="sm"><AlertIcon /><AlertTitle>...</AlertTitle></Flex>
+ *   <AlertDescription>line 1</AlertDescription>
+ *   <AlertDescription>line 2</AlertDescription>
+ *   {optionalFooter}
+ * </Alert>
+ * ```
+ * pattern that appears in every destructive confirmation dialog into a
+ * single declarative component.
+ *
+ * @example
+ * ```tsx
+ * <SSAlertDialogAlert
+ *   status="error"
+ *   title="Warning"
+ *   descriptions={[
+ *     `There are 3 devices only polled from ${name}. They will be permanently removed.`,
+ *     'If you want to keep monitoring them, re-assign their poller first.',
+ *   ]}
+ *   footer={
+ *     <Link href="/cgi/oa_ping_manager">
+ *       <Button variant="secondary" colorScheme="red">Re-assign pollers</Button>
+ *     </Link>
+ *   }
+ * />
+ *
+ * <SSAlertDialogAlert
+ *   status="info"
+ *   title="Note"
+ *   descriptions={['This will delete all ping data collected from this appliance.']}
+ * />
+ * ```
+ */
+export function SSAlertDialogAlert({
+   status = 'info',
+   title,
+   descriptions,
+   footer,
+   alertProps,
+}: SSAlertDialogAlertProps) {
+   return (
+      <Alert
+         status={status}
+         display="flex"
+         flexDirection="column"
+         alignItems="flex-start"
+         gap="sm"
+         borderRadius="sm"
+         {...alertProps}
+      >
+         {title && (
+            <Flex gap="sm">
+               <AlertIcon />
+               <AlertTitle>{title}</AlertTitle>
+            </Flex>
+         )}
+         {!title && <AlertIcon />}
+
+         {descriptions.map((desc, i) => (
+            <AlertDescription key={i}>{desc}</AlertDescription>
+         ))}
+
+         {footer}
+      </Alert>
+   );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SSAlertDialog props
 // ─────────────────────────────────────────────────────────────────────────────
 
 export type SSAlertDialogProps = {
-   // ── Open / close ──────────────────────────────────────────────────────────
-   /**
-    * Controlled open state.
-    * Either pass `isOpen + onClose` OR a `disclosure` object.
-    */
+   // ── Open / close
    isOpen?: boolean;
-   /** Close handler paired with `isOpen`. */
    onClose?: () => void;
-   /**
-    * Pass a `UseDisclosureReturn` object directly instead of `isOpen`/`onClose`.
-    * Matches the same API as SSModal for consistency.
-    */
    disclosure?: UseDisclosureReturn;
 
-   // ── Header ────────────────────────────────────────────────────────────────
-   /**
-    * Text shown in the `AlertDialogHeader`.
-    * If omitted the header element is not rendered.
-    */
+   // ── Header
    title?: string;
-   /** Hide the × close button in the top-right corner. Defaults to false. */
    hideCloseButton?: boolean;
 
-   // ── Body ──────────────────────────────────────────────────────────────────
-   /**
-    * Content rendered inside `AlertDialogBody`.
-    * Typically Alerts, Text, or any confirmation message.
-    */
-   children: ReactNode;
-   /** Extra Chakra props forwarded to `AlertDialogBody`. */
+   // ── Body
+   children?: ReactNode;
    bodyProps?: AlertDialogBodyProps;
 
-   // ── Footer buttons ────────────────────────────────────────────────────────
-   /**
-    * The primary (often destructive) action button.
-    * Rendered on the left so the user's eye naturally reaches Cancel first —
-    * consistent with Chakra's AlertDialog accessibility guidance.
-    */
+   // ── Footer buttons
    confirmButton?: ModalButtonConfig;
-   /**
-    * The safe / cancel button.
-    * This element receives `leastDestructiveRef` focus automatically —
-    * no need to pass a ref from the caller.
-    */
    cancelButton?: ModalButtonConfig;
-   /**
-    * Any extra buttons inserted between confirm and cancel.
-    */
    extraButtons?: ModalButtonConfig[];
 
-   // ── Layout & behaviour ────────────────────────────────────────────────────
-   /** Chakra AlertDialog `size` prop. @default 'md' */
+   // ── Layout & behaviour
    size?: AlertDialogProps['size'];
-   /** Centre the dialog vertically in the viewport. */
    isCentered?: boolean;
-   /** Prevent closing when the user clicks the overlay. Defaults to true. */
    closeOnOverlayClick?: boolean;
-   /** Extra props forwarded to `AlertDialogContent`. */
    contentProps?: AlertDialogContentProps;
-   /**
-    * Any other Chakra AlertDialog props
-    * (scrollBehavior, returnFocusOnClose, motionPreset, etc.).
-    * `leastDestructiveRef` is managed internally — do not pass it here.
-    */
    modalProps?: Omit<
       AlertDialogProps,
       | 'isOpen'
@@ -98,85 +165,62 @@ export type SSAlertDialogProps = {
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Component
+// SSAlertDialog component
 // ─────────────────────────────────────────────────────────────────────────────
 
 /**
- * **SSAlertDialog** — the single wrapper for all destructive-action confirmation
- * dialogs in this codebase.
+ * **SSAlertDialog** — unified wrapper for all destructive-action confirmation
+ * dialogs. Renders with `role="alertdialog"` (unlike SSModal which uses
+ * `role="dialog"`) preserving accessibility semantics and test queries.
  *
- * ## Why not SSModal?
+ * Use **SSAlertDialogAlert** for the standardised Alert panels inside the body:
  *
- * Chakra's `AlertDialog` renders with `role="alertdialog"` (vs `role="dialog"`
- * for Modal). This distinction matters for:
- * - **Accessibility** — screen readers announce alertdialog content immediately
- *   and interrupt the user, signalling that a response is required.
- * - **Tests** — existing specs query by `screen.getByRole('alertdialog')`;
- *   using Modal underneath would silently break them.
- *
- * SSAlertDialog deliberately mirrors the SSModal prop API so the two feel
- * identical to callers — swap one for the other with minimal diff.
- *
- * ## Key differences from SSModal
- * - Uses `AlertDialog` / `AlertDialogBody` etc. underneath.
- * - Manages `leastDestructiveRef` internally (always points to Cancel button).
- * - Footer order is **Confirm → Cancel** (left → right) — matches Chakra's
- *   AlertDialog convention where Cancel is the safe default and gets initial
- *   focus, but is placed last visually.
- *
- * @example Destructive confirmation
  * ```tsx
  * <SSAlertDialog
  *   isOpen={isOpen}
  *   onClose={onClose}
  *   title="Delete Appliance"
  *   size="xl"
+ *   isCentered
  *   confirmButton={{ label: 'Delete', variant: 'danger', onClick: handleDelete, isLoading: isPending }}
- *   cancelButton={{ label: 'Cancel', onClick: onClose }}
+ *   cancelButton={{ label: 'Cancel' }}
+ *   bodyProps={{ gap: 'sm', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}
  * >
- *   <Alert status="error">...</Alert>
- *   <Text>Are you sure? This action can't be undone.</Text>
- * </SSAlertDialog>
- * ```
- *
- * @example Disclosure-driven
- * ```tsx
- * const disclosure = useDisclosure();
- * <SSAlertDialog disclosure={disclosure} title="Delete" ...>
- *   ...
+ *   <SSAlertDialogAlert
+ *     status="error"
+ *     title="Warning"
+ *     descriptions={['3 devices will be permanently removed.']}
+ *     footer={<Link href="/cgi/..."><Button>Re-assign pollers</Button></Link>}
+ *   />
+ *   <SSAlertDialogAlert
+ *     status="info"
+ *     title="Note"
+ *     descriptions={['All ping data will be deleted.']}
+ *   />
+ *   <Text paddingY={2}>Are you sure? This action can't be undone.</Text>
  * </SSAlertDialog>
  * ```
  */
 export function SSAlertDialog({
-   // open / close
    isOpen: isOpenProp,
    onClose: onCloseProp,
    disclosure,
-   // header
    title,
    hideCloseButton = false,
-   // body
    children,
    bodyProps,
-   // footer
    confirmButton,
    cancelButton,
    extraButtons,
-   // layout
    size = 'md',
    isCentered = false,
    closeOnOverlayClick = true,
    contentProps,
    modalProps,
 }: SSAlertDialogProps) {
-   // Resolve open/close from either the disclosure object or individual props
    const isOpen = disclosure?.isOpen ?? isOpenProp ?? false;
    const onClose = disclosure?.onClose ?? onCloseProp ?? (() => {});
-
-   // leastDestructiveRef must point to the least-destructive interactive
-   // element — always the Cancel button per Chakra's AlertDialog contract.
    const cancelRef = useRef<HTMLButtonElement>(null);
-
    const hasFooter = !!(confirmButton || cancelButton || extraButtons?.length);
 
    return (
@@ -203,7 +247,6 @@ export function SSAlertDialog({
 
             {hasFooter && (
                <AlertDialogFooter gap="sm">
-                  {/* Confirm (destructive) renders first / left */}
                   {confirmButton && (
                      <Button
                         variant={confirmButton.variant ?? 'danger'}
@@ -215,7 +258,6 @@ export function SSAlertDialog({
                         {confirmButton.label}
                      </Button>
                   )}
-
                   {extraButtons?.map((btn, i) => (
                      <Button
                         key={i}
@@ -228,8 +270,6 @@ export function SSAlertDialog({
                         {btn.label}
                      </Button>
                   ))}
-
-                  {/* Cancel renders last / right and receives leastDestructiveRef */}
                   {cancelButton && (
                      <Button
                         ref={cancelRef}
@@ -248,6 +288,5 @@ export function SSAlertDialog({
    );
 }
 
-// Re-export hook + type so callers don't need to reach into Chakra directly
 export { useDisclosure };
 export type { UseDisclosureReturn };
