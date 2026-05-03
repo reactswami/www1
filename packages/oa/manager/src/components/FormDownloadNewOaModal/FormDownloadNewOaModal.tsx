@@ -1,15 +1,6 @@
-import {
-   Button,
-   Modal,
-   ModalBody,
-   ModalCloseButton,
-   ModalContent,
-   ModalFooter,
-   ModalHeader,
-   ModalOverlay,
-   Text,
-} from '@chakra-ui/react';
-
+import { SSModal } from '@statseeker/components/Layout/Modal';
+import { Button } from '@statseeker/components/Form/Button';
+import { Text } from '@statseeker/components/Typography/Text';
 import { DownloadIcon } from '@statseeker/ui/icons';
 import { useQueryClient } from '@tanstack/react-query';
 import { queryKeys } from '~/lib/ReactQuery';
@@ -23,52 +14,27 @@ interface Props {
 export const FormDownloadNewOaModal = ({ isOpen, onClose, newOaName }: Props) => {
    const queryClient = useQueryClient();
 
+   const handleDownload = () => {
+      const newTab = window.open(`/cgi/oa_image_downloader?name=${newOaName}`, '_blank');
+      if (newTab) { newTab.focus(); onClose(); }
+   };
+
    return (
-      <Modal
+      <SSModal
          isOpen={isOpen}
          onClose={onClose}
          isCentered
-         onCloseComplete={() => {
-            queryClient.invalidateQueries({ queryKey: queryKeys.all });
-         }}
          closeOnOverlayClick={false}
+         title="Observability Appliance created"
+         contentProps={{ minWidth: 'max-content' }}
+         modalProps={{ onCloseComplete: () => queryClient.invalidateQueries({ queryKey: queryKeys.all }) }}
+         confirmButton={{ label: 'Download', variant: 'primary', onClick: handleDownload }}
+         cancelButton={{ label: 'Close', onClick: onClose }}
       >
-         <ModalOverlay />
-         <ModalContent minWidth={'max-content'}>
-            <ModalCloseButton />
-
-            <ModalHeader>Observability Appliance created</ModalHeader>
-
-            <ModalBody>
-               <Text>
-                  Your Observability Appliance has been created, however it can take up to a minute to appear in
-                  the list.
-               </Text>
-               <Text>Would you like to download an image for deployment?</Text>
-            </ModalBody>
-
-            <ModalFooter>
-               <Button
-                  mr={3}
-                  onClick={() => {
-                     const newTab = window.open(
-                        `/cgi/oa_image_downloader?name=${newOaName}`,
-                        '_blank'
-                     );
-                     if (newTab) {
-                        newTab.focus();
-                        onClose();
-                     }
-                  }}
-                  leftIcon={<DownloadIcon />}
-               >
-                  Download
-               </Button>
-               <Button variant="ghost" onClick={onClose}>
-                  Close
-               </Button>
-            </ModalFooter>
-         </ModalContent>
-      </Modal>
+         <Text>
+            Your Observability Appliance has been created, however it can take up to a minute to appear in the list.
+         </Text>
+         <Text>Would you like to download an image for deployment?</Text>
+      </SSModal>
    );
 };

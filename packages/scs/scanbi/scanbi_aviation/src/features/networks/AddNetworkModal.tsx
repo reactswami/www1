@@ -1,11 +1,5 @@
-import {
-   Heading,
-   Modal,
-   ModalBody,
-   ModalCloseButton,
-   ModalContent,
-   ModalOverlay,
-} from '@chakra-ui/react';
+import { Heading } from '@chakra-ui/react';
+import { SSModal } from '@statseeker/components/Layout/Modal';
 import { useToast } from '@statseeker/hooks';
 import { useMutation } from '@tanstack/react-query';
 import { type AxiosError, type AxiosResponse } from 'axios';
@@ -29,40 +23,27 @@ export function AddNetworkModal({ isOpen, onClose }: { isOpen: boolean; onClose:
          onClose();
          toast(toastMessages.createEntity.success('Network', network.scannerNetworkTitle));
       },
-      onError: (
-         {
-            response: {
-               // @ts-ignore
-               data: {
-                  result: { msg },
-               },
-            },
-         },
-         newNetwork
-      ) => {
+      onError: ({ response: { data: { result: { msg } } } }: any, newNetwork) => {
          toast(toastMessages.createEntity.error('Network', msg));
       },
    });
 
-   function handleFormSubmit(data: NewNetwork) {
-      networkMutation(data);
-   }
-
    return (
-      <Modal isOpen={isOpen} isCentered onClose={onClose} closeOnOverlayClick={false}>
-         <ModalOverlay />
-         <ModalContent maxWidth={'100vw'} width={'max-content'} padding={8}>
-            <ModalCloseButton onClick={onClose} />
-            <ModalBody padding={0}>
-               <Heading>Add Network</Heading>
-               <NetworkForm
-                  onSubmit={handleFormSubmit}
-                  isSubmitting={isMutating}
-                  onCancel={onClose}
-                  defaultValues={{ scannerNetworkType: 'RCC' }}
-               />
-            </ModalBody>
-         </ModalContent>
-      </Modal>
+      <SSModal
+         isOpen={isOpen}
+         onClose={onClose}
+         isCentered
+         closeOnOverlayClick={false}
+         contentProps={{ maxWidth: '100vw', width: 'max-content', padding: 8 }}
+         bodyProps={{ padding: 0 }}
+      >
+         <Heading>Add Network</Heading>
+         <NetworkForm
+            onSubmit={(data) => networkMutation(data)}
+            isSubmitting={isMutating}
+            onCancel={onClose}
+            defaultValues={{ scannerNetworkType: 'RCC' }}
+         />
+      </SSModal>
    );
 }

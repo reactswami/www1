@@ -1,12 +1,5 @@
-import {
-   Heading,
-   Modal,
-   ModalBody,
-   ModalCloseButton,
-   ModalContent,
-   ModalOverlay,
-   type UseDisclosureReturn,
-} from '@chakra-ui/react';
+import { Heading, type UseDisclosureReturn } from '@chakra-ui/react';
+import { SSModal } from '@statseeker/components/Layout/Modal';
 import React from 'react';
 
 interface Props {
@@ -17,22 +10,15 @@ interface Props {
 
 export const ModalAddForm = ({ disclosure, render, title }: Props) => {
    return (
-      <>
-         <Modal
-            isOpen={disclosure.isOpen}
-            isCentered
-            onClose={disclosure.onClose}
-            closeOnOverlayClick={false}
-         >
-            <ModalOverlay />
-            <ModalContent maxWidth={'100vw'} width={'max-content'} padding={8}>
-               <ModalCloseButton />
-               <ModalBody padding={0}>
-                  <Heading>{title}</Heading>
-                  {render()}
-               </ModalBody>
-            </ModalContent>
-         </Modal>
-      </>
+      <SSModal
+         disclosure={disclosure}
+         isCentered
+         closeOnOverlayClick={false}
+         contentProps={{ maxWidth: '100vw', width: 'max-content', padding: 8 }}
+         bodyProps={{ padding: 0 }}
+      >
+         <Heading>{title}</Heading>
+         {render()}
+      </SSModal>
    );
 };
