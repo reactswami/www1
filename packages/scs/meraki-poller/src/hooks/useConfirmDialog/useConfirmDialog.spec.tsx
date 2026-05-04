@@ -18,6 +18,7 @@ describe('UseConfirmDialog', () => {
          )
       ).not.toThrow();
    });
+
    it('should call the save action when clicking', async () => {
       const user = userEvent.setup();
       const spy = vi.fn();
@@ -38,13 +39,16 @@ describe('UseConfirmDialog', () => {
 
       render(<Test />);
 
+      // SSAlertDialog renders role="alertdialog"
+      await screen.findByRole('alertdialog');
       await user.click(screen.getByRole('button', { name: /save/i }));
 
       await waitFor(() => {
          expect(spy).toHaveBeenCalled();
       });
    });
-   it('should show a loading state and disable the cancel when it is loading', () => {
+
+   it('should show a loading state and disable the cancel when it is loading', async () => {
       const Test = () => {
          const { Modal, open } = useConfirmDialog({
             onConfirm: vi.fn(),
@@ -62,6 +66,7 @@ describe('UseConfirmDialog', () => {
 
       render(<Test />);
 
+      await screen.findByRole('alertdialog');
       expect(screen.getByRole('button', { name: /cancel/i })).toBeDisabled();
    });
 });

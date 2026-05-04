@@ -1,27 +1,44 @@
-import { Button, Flex } from '@chakra-ui/react';
-import { useModal, type useModalProps } from '@statseeker/components/Legacy/Modal/Modal';
+import { SSAlertDialog } from '@statseeker/components/Layout/AlertDialog';
+import { useDisclosure } from '@chakra-ui/react';
 import { type ReactNode } from 'react';
 
 export interface useConfirmDialogProps {
+   /** Whether the confirm button should show a loading spinner and disable both buttons. */
    isPending: boolean;
+   /** Called when the confirm button is clicked. */
    onConfirm: () => void;
+   /** Dialog header title. */
    title: string;
+   /**
+    * Content rendered inside the dialog body.
+    * Can be a string, JSX, or any ReactNode.
+    */
    body: ReactNode | string;
+   /** Labels for the confirm and cancel buttons. */
    labels: {
       confirm: string;
       cancel: string;
    };
+   /**
+    * Optional button variant overrides.
+    * Defaults to `{ confirm: { variant: 'danger' }, cancel: { variant: 'tertiary' } }`.
+    */
    options?: {
-      confirm: ButtonOptions;
-      cancel: ButtonOptions;
+      confirm?: { variant?: string };
+      cancel?: { variant?: string };
    };
 }
 
-type ButtonOptions = {
-   colorScheme: string;
-   variant: string;
-};
-
+/**
+ * **useConfirmDialog** (meraki-poller local) — hook that returns a
+ * pre-configured `SSAlertDialog` component and imperative `open`/`close`
+ * helpers.
+ *
+ * Rewrites the legacy `useModal` + raw Chakra `Button`/`Flex` implementation
+ * with `SSAlertDialog` (renders `role="alertdialog"`).
+ *
+ * The returned `{ Modal, open, close }` API is unchanged.
+ */
 export const useConfirmDialog = ({
    isPending,
    onConfirm,
@@ -29,30 +46,35 @@ export const useConfirmDialog = ({
    body,
    labels: { confirm, cancel },
    options = {
-      confirm: { colorScheme: 'primary', variant: 'solid' },
-      cancel: { colorScheme: 'primary', variant: 'solid' },
+      confirm: { variant: 'danger' },
+      cancel: { variant: 'tertiary' },
    },
 }: useConfirmDialogProps) => {
-   const modalProps: useModalProps = {
-      title,
-      body,
-      footer: (
-         <Flex gap="sm">
-            <Button onClick={onConfirm} {...options.confirm} isLoading={isPending}>
-               {confirm}
-            </Button>
-            <Button onClick={onClose} {...options.cancel} isDisabled={isPending}>
-               {cancel}
-            </Button>
-         </Flex>
-      ),
-   };
+   const { isOpen, onOpen, onClose } = useDisclosure();
 
-   const { Modal, open, close } = useModal(modalProps);
+   const Modal = () => (
+      <SSAlertDialog
+         isOpen={isOpen}
+         onClose={onClose}
+         isCentered
+         size="xl"
+         title={title}
+         confirmButton={{
+            label: confirm,
+            variant: (options.confirm?.variant ?? 'danger') as any,
+            onClick: onConfirm,
+            isLoading: isPending,
+         }}
+         cancelButton={{
+            label: cancel,
+            variant: (options.cancel?.variant ?? 'tertiary') as any,
+            isDisabled: isPending,
+            onClick: onClose,
+         }}
+      >
+         {body}
+      </SSAlertDialog>
+   );
 
-   function onClose() {
-      close();
-   }
-
-   return { Modal, open, close };
+   return { Modal, open: onOpen, close: onClose };
 };
