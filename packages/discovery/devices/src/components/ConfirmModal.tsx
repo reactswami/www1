@@ -1,5 +1,6 @@
 import { type Device } from '@statseeker/api/internal_api/entities';
-import ConfirmDialog from '@statseeker/components/Legacy/ConfirmDialog/ConfirmDialog';
+import { SSAlertDialog, SSAlertDialogAlert } from '@statseeker/components/Layout/AlertDialog';
+import { Text } from '@statseeker/components/Typography';
 import { useToast } from '@statseeker/hooks';
 import { useMutation } from '@tanstack/react-query';
 import { useSearch, useNavigate } from '@tanstack/react-router';
@@ -20,6 +21,7 @@ export function ConfirmModal({
    const search = useSearch({ from: '/devices' });
    const navigate = useNavigate();
    const toast = useToast();
+
    const mutation = useMutation({
       mutationFn: () =>
          deleteRetireCgi(mode, {
@@ -29,22 +31,17 @@ export function ConfirmModal({
       onSuccess: () => {
          toast({
             status: 'success',
-            title: `Success`,
+            title: 'Success',
             description: `The devices have been successfully ${mode}d.`,
          });
          queryClient.invalidateQueries();
          onClose();
-         navigate({
-            search: (prev) => ({
-               ...prev,
-               selectedIds: undefined,
-            }),
-         });
+         navigate({ search: (prev) => ({ ...prev, selectedIds: undefined }) });
       },
       onError: (resp) => {
          toast({
             status: 'error',
-            title: `Error`,
+            title: 'Error',
             description:
                resp.message ||
                'An error has occurred. If the problem persists, contact the support team.',
@@ -54,28 +51,34 @@ export function ConfirmModal({
 
    const count = selectedDevices.length || 'all';
    const suffix = count === 1 ? '' : 's';
-   const getConfirmation = () =>
-      `Are you sure you want to ${mode} ${count} device${suffix}? This action cannot be undone.`;
-   const getNote = () =>
+   const note =
       mode === 'delete'
          ? `All historical data will be removed for the device${suffix}`
-         : mode === 'retire'
-         ? `All polling will stop for the device${suffix}, but historical data will be retained`
-         : '';
+         : `All polling will stop for the device${suffix}, but historical data will be retained`;
+   const confirmation = `Are you sure you want to ${mode} ${count} device${suffix}? This action cannot be undone.`;
 
    return (
-      <>
-         <ConfirmDialog
-            title={`${mode} devices`}
-            note={getNote()}
-            onAction={() => mutation.mutate()}
-            isLoading={mutation.isPending}
-            isPending={mutation.isPending}
-            action={mode as string}
-            isOpen={isOpen}
-            onClose={onClose}
-            confirmation={getConfirmation()}
+      <SSAlertDialog
+         isOpen={isOpen}
+         onClose={onClose}
+         isCentered
+         size="xl"
+         title={`${mode} devices`}
+         confirmButton={{
+            label: mode,
+            variant: 'danger',
+            onClick: () => mutation.mutate(),
+            isLoading: mutation.isPending,
+         }}
+         cancelButton={{ label: 'Cancel' }}
+         bodyProps={{ gap: 'md', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}
+      >
+         <SSAlertDialogAlert
+            status="info"
+            title="Note"
+            descriptions={[note]}
          />
-      </>
+         <Text paddingY={2}>{confirmation}</Text>
+      </SSAlertDialog>
    );
 }

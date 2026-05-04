@@ -1,5 +1,6 @@
 import { type UseDisclosureReturn } from '@chakra-ui/react';
-import ConfirmDialog from '@statseeker/components/Legacy/ConfirmDialog/ConfirmDialog';
+import { SSAlertDialog } from '@statseeker/components/Layout/AlertDialog';
+import { Text } from '@statseeker/components/Typography';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import useDisableSchedule from '../hooks/useDisableSchedule';
@@ -29,41 +30,38 @@ export default ({ id, disclosure, enabled }: Props) => {
    };
 
    useEffect(() => {
-      if (!isOpen) {
-         return;
-      }
-      refetch(); // Refetch every time it opens (unless cached)
+      if (!isOpen) return;
+      refetch();
    }, [isOpen, refetch]);
 
    const getTitle = () => {
-      if (id.length === 0) {
-         return 'Disable all configured schedules';
-      }
-
-      if (id.length === 1) {
-         return `Disable Schedule - ${scheduleName}`;
-      }
-
-      if (id.length > 1) {
-         return `Disable Schedules`;
-      }
-
+      if (id.length === 0) return 'Disable all configured schedules';
+      if (id.length === 1) return `Disable Schedule - ${scheduleName}`;
+      if (id.length > 1) return 'Disable Schedules';
       return '';
    };
 
    const count = id.length || 'all';
    const suffix = count === 1 ? '' : 's';
-   const getConfirmation = () => `Are you sure you want to disable ${count} schedule${suffix}?`;
+   const confirmation = `Are you sure you want to disable ${count} schedule${suffix}?`;
 
    return (
-      <ConfirmDialog
-         title={getTitle()}
-         onAction={async () => await handleConfirm()}
-         isLoading={isPending || isLoading}
+      <SSAlertDialog
          isOpen={isOpen}
          onClose={onClose}
-         confirmation={getConfirmation()}
-         action="Disable"
-      />
+         isCentered
+         size="xl"
+         title={getTitle()}
+         confirmButton={{
+            label: 'Disable',
+            variant: 'danger',
+            onClick: handleConfirm,
+            isLoading: isPending || isLoading,
+         }}
+         cancelButton={{ label: 'Cancel' }}
+         bodyProps={{ gap: 'md', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}
+      >
+         <Text paddingY={2}>{confirmation}</Text>
+      </SSAlertDialog>
    );
 };
