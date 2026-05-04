@@ -1,4 +1,5 @@
-import { Button, Flex } from '@chakra-ui/react';
+import { Flex } from '@chakra-ui/react';
+import { Button, Flex, Text } from '@statseeker/components';
 import { useModal, type useModalProps } from '@statseeker/components/Legacy/Modal/Modal';
 import { type ReactNode } from 'react';
 
@@ -18,7 +19,6 @@ export interface useConfirmDialogProps {
 }
 
 type ButtonOptions = {
-   colorScheme: string;
    variant: string;
 };
 
@@ -29,8 +29,8 @@ export const useConfirmDialog = ({
    body,
    labels: { confirm, cancel },
    options = {
-      confirm: { colorScheme: 'primary', variant: 'solid' },
-      cancel: { colorScheme: 'primary', variant: 'solid' },
+      confirm: { variant: 'primary' },
+      cancel: { variant: 'tertiary' },
    },
 }: useConfirmDialogProps) => {
    const modalProps: useModalProps = {
