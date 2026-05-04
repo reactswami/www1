@@ -1,77 +1,99 @@
-import { type ConfirmationOptions } from "@statseeker/components";
-import ConfirmationDialog from "@statseeker/components/Legacy/ConfirmDialog/ConfirmDialog";
+import { SSAlertDialog, SSAlertDialogAlert } from '@statseeker/components/Layout/AlertDialog';
+import { Text } from '@statseeker/components/Typography';
+import { Link } from '@chakra-ui/react';
+import { Button } from '@statseeker/components/Form/Button';
 
 interface Props {
-    name: string;
-    isOpen: boolean;
-    onClose: () => void;
-    isLoadingOrphanCount: boolean;
-    count: number;
-    isPending: boolean;
-    handleConfirm: () => void;
+   name: string;
+   isOpen: boolean;
+   onClose: () => void;
+   isLoadingOrphanCount: boolean;
+   count: number;
+   isPending: boolean;
+   handleConfirm: () => void;
 }
 
 export const DeleteOaConfirmDialog = ({
-    name,
-    isOpen,
-    onClose,
-    isLoadingOrphanCount,
-    count,
-    isPending,
-    handleConfirm
+   name,
+   isOpen,
+   onClose,
+   isLoadingOrphanCount,
+   count,
+   isPending,
+   handleConfirm,
 }: Props) => {
-    // Build options array based on conditions
-    const getOptions = (): ConfirmationOptions[] => {
-        const options: ConfirmationOptions[] = [];
+   const isLoading = isPending || isLoadingOrphanCount;
 
-        // Add warning about orphaned devices if applicable
-        if (!isLoadingOrphanCount && count > 0) {
-            options.push({
-                title: `Delete Appliance - ${name}`,
-                note: `There ${count > 1 ? 'are' : 'is'} ${count} device${count > 1 ? 's' : ''} that are only polled from ${name}. Proceeding with this action will permanently remove ${count > 1 ? 'them' : 'it'} from Statseeker.\n\nIf you want to continue monitoring these devices, please assign them to another poller first.`,
-                confirmationLink: {
-                    link: `${window.location.origin}/cgi/oa_ping_manager`,
-                    title: 'Re-assign pollers'
-                },
-            });
-        } else {
-            // Just the title with main info note
-            options.push({
-                title: `Delete Appliance - ${name}`,
-                note: `This will delete all ping data collected from ${name}.\n\nDeleting an Observability Appliance will only remove the configuration from Statseeker and will not remove the deployed Observability Appliance.`,
-            });
-        }
+   return (
+      <SSAlertDialog
+         isOpen={isOpen}
+         onClose={onClose}
+         isCentered
+         size="xl"
+         title={`Delete Appliance - ${name}`}
+         confirmButton={{
+            label: 'Delete',
+            variant: 'danger',
+            onClick: handleConfirm,
+            isLoading,
+         }}
+         cancelButton={{
+            label: 'Cancel',
+            isDisabled: isLoading,
+         }}
+         bodyProps={{
+            gap: 'sm',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+         }}
+      >
+         {/* Loading state — verifying orphan devices */}
+         {isLoadingOrphanCount && (
+            <Text>Verifying the devices polled by {name}, please wait.</Text>
+         )}
 
-        return options;
-    };
-
-    // Show loading message while checking orphan count
-    if (isLoadingOrphanCount) {
-        return (
-            <ConfirmationDialog
-                title={`Delete Appliance - ${name}`}
-                note={`Verifying the devices polled by ${name}, please wait.`}
-                confirmation=""
-                isOpen={isOpen}
-                onClose={onClose}
-                isPending={isPending}
-                isLoading={isLoadingOrphanCount}
-                action="Delete"
-                onAction={handleConfirm}
+         {/* Loaded: orphaned devices found — show warning + re-assign link */}
+         {!isLoadingOrphanCount && count > 0 && (
+            <SSAlertDialogAlert
+               status="error"
+               title="Warning"
+               descriptions={[
+                  `There ${count > 1 ? 'are' : 'is'} ${count} device${
+                     count > 1 ? 's' : ''
+                  } that are only polled from ${name}. Proceeding with this action will permanently remove ${
+                     count > 1 ? 'them' : 'it'
+                  } from Statseeker.`,
+                  'If you want to continue monitoring these devices, please assign them to another poller first.',
+               ]}
+               footer={
+                  <Link href={`${window.location.origin}/cgi/oa_ping_manager`}>
+                     <Button alignSelf="flex-end" variant="danger-light">
+                        Re-assign pollers
+                     </Button>
+                  </Link>
+               }
             />
-        );
-    }
+         )}
 
-    return (
-        <ConfirmationDialog
-            options={getOptions()}
-            confirmation={`Are you sure you wish to delete ${name}? This action can't be undone.`}
-            isOpen={isOpen}
-            onClose={onClose}
-            isPending={isPending}
-            isLoading={isLoadingOrphanCount}
-            action="Delete"
-            onAction={handleConfirm}
-        />
-    );
+         {/* Loaded: no orphaned devices — show standard info note */}
+         {!isLoadingOrphanCount && count === 0 && (
+            <SSAlertDialogAlert
+               status="info"
+               title="Note"
+               descriptions={[
+                  `This will delete all ping data collected from ${name}.`,
+                  'Deleting an Observability Appliance will only remove the configuration from Statseeker and will not remove the deployed Observability Appliance.',
+               ]}
+            />
+         )}
+
+         {/* Confirmation text — shown once orphan check is done */}
+         {!isLoadingOrphanCount && (
+            <Text paddingY={2}>
+               Are you sure you wish to delete {name}? This action can't be undone.
+            </Text>
+         )}
+      </SSAlertDialog>
+   );
 };

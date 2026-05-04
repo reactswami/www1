@@ -1,4 +1,5 @@
-import ConfirmationDialog from "@statseeker/components/Legacy/ConfirmDialog/ConfirmDialog";
+import { SSAlertDialog } from '@statseeker/components/Layout/AlertDialog';
+import { Text } from '@statseeker/components/Typography';
 
 export interface DisableOaConfirmDialogProps {
    isOpen: boolean;
@@ -15,15 +16,26 @@ export const DisableOaConfirmDialog = ({
    isDisabled,
    isPending,
 }: DisableOaConfirmDialogProps) => {
+   const action = isDisabled ? 'Enable' : 'Disable';
+
    return (
-      <ConfirmationDialog
-         title={`${isDisabled ? 'Enable' : 'Disable'} Observability Appliance`}
-         confirmation={`Are you sure you want to ${isDisabled ? 'enable' : 'disable'} the Observability Appliance?`}
+      <SSAlertDialog
          isOpen={isOpen}
          onClose={onClose}
-         isPending={isPending}
-         action={isDisabled ? 'Enable Observability Appliance' : 'Disable Observability Appliance'}
-         onAction={onConfirm}
-      />
+         isCentered
+         size="xl"
+         title={`${action} Observability Appliance`}
+         confirmButton={{
+            label: `${action} Observability Appliance`,
+            variant: 'danger',
+            onClick: onConfirm,
+            isLoading: isPending,
+         }}
+         cancelButton={{ label: 'Cancel' }}
+      >
+         <Text paddingY={2}>
+            Are you sure you want to {action.toLowerCase()} the Observability Appliance?
+         </Text>
+      </SSAlertDialog>
    );
 };
